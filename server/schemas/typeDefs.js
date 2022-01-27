@@ -30,7 +30,7 @@ const typeDefs = gql`
   type Query {
     categories: [Category]
     posts(category: ID, name: String): [Post]
-    post(_id: ID!): Product
+    post(_id: ID!): Post
     user: User
   }
 
@@ -47,7 +47,7 @@ const typeDefs = gql`
       email: String
       password: String
     ): User
-    updatePost(_id: ID!, quantity: Int!): Product
+    updatePost(_id: ID!, quantity: Int!): Post
     login(email: String!, password: String!): Auth
   }
 `;

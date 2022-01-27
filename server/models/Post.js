@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const { commentSchema } = require("./Comment.js");
+const { categorySchema } = require("./Category");
 const postSchema = new Schema({
   title: {
     type: String,
@@ -12,13 +14,19 @@ const postSchema = new Schema({
   image: {
     type: String,
   },
-  category: {
+  category: categorySchema,
+  user: {
     type: Schema.Types.ObjectId,
-    ref: "Category",
+    ref: "User",
     required: true,
   },
+  dateCreated: {
+    type: Date,
+    default: Date.Now,
+  },
+  comments: [commentSchema],
 });
 
 const Post = mongoose.model("Post", postSchema);
 
-module.exports = Post;
+module.exports = { Post, postSchema };

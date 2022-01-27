@@ -20,6 +20,8 @@ function Footer() {
           <Link px={4}>Dashboard</Link>
           <Link px={4}>Terms &amp; Conditions</Link>
           <Link px={4}>Privacy Policy</Link>
+          <Link px={4}>FAQ</Link>
+          <Link px={4}>Contact</Link>
         </Center>
       </Box>
       <Center>

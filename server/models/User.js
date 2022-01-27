@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
-const Post = require("./Post");
+const { postSchema } = require("./Post");
 
 const userSchema = new Schema({
   firstName: {
@@ -24,7 +24,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  posts: [Post],
+  posts: [postSchema],
 });
 
 // set up pre-save middleware to create password
