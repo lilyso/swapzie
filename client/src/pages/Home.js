@@ -5,7 +5,9 @@ import { Link as RouterLink } from "react-router-dom";
 const Home = () => {
   return (
     <div>
-      <About />
+      <RouterLink>
+        <About />
+      </RouterLink>
     </div>
   );
 };

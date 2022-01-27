@@ -20,16 +20,16 @@ function Nav() {
                 <RouterLink to="/">About</RouterLink>
               </Tab>
               <Tab>
-                <RouterLink to="/">Swap</RouterLink>
+                <RouterLink to="/swap">Swap</RouterLink>
               </Tab>
               <Tab>
-                <RouterLink to="/">Dashboard</RouterLink>
+                <RouterLink to="/dashboard">Dashboard</RouterLink>
               </Tab>
               <Tab>
-                <RouterLink to="/">Login</RouterLink>
+                <RouterLink to="/login">Login</RouterLink>
               </Tab>
               <Tab>
-                <RouterLink to="/">Sign Up</RouterLink>
+                <RouterLink to="/signup">Sign Up</RouterLink>
               </Tab>
             </TabList>
           </Tabs>

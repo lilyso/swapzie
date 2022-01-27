@@ -14,11 +14,10 @@ const postSchema = new Schema({
   image: {
     type: String,
   },
-  category: categorySchema,
+  category: { categorySchema },
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true,
   },
   dateCreated: {
     type: Date,
