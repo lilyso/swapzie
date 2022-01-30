@@ -6,7 +6,7 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    posts: [Post]
+    posts: [String]
   }
 
   type Category {
@@ -19,7 +19,9 @@ const typeDefs = gql`
     title: String
     description: String
     image: String
-    category: Category
+    category: ID
+    user: ID
+    comments: [String]
   }
 
   type Auth {

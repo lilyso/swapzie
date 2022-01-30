@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const { commentSchema } = require("./Comment.js");
-const { categorySchema } = require("./Category");
+const { Category, categorySchema } = require("./Category");
 const postSchema = new Schema({
   title: {
     type: String,
@@ -14,7 +14,7 @@ const postSchema = new Schema({
   image: {
     type: String,
   },
-  category: { categorySchema },
+  category: { type: Schema.Types.ObjectId, ref: "Category" },
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",

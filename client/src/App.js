@@ -10,6 +10,8 @@ import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import Home from "./pages/Home";
+import Swap from "./pages/Swap";
+import Dashboard from "./pages/Dashboard";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
@@ -38,9 +40,11 @@ function App() {
       <ApolloProvider client={client}>
         <Router>
           <Nav />
-          <Home />
           <Routes>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/about" element={<Home />} />
+            <Route exact path="/swap" element={<Swap />} />
+            <Route exact path="/dashboard" element={<Dashboard />} />
           </Routes>
           <Footer />
         </Router>

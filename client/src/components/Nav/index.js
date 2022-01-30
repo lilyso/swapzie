@@ -17,7 +17,7 @@ function Nav() {
           <Tabs color="#1a535c" variant="unstyled" pt={8}>
             <TabList>
               <Tab>
-                <RouterLink to="/">About</RouterLink>
+                <RouterLink to="/about">About</RouterLink>
               </Tab>
               <Tab>
                 <RouterLink to="/swap">Swap</RouterLink>
@@ -26,10 +26,10 @@ function Nav() {
                 <RouterLink to="/dashboard">Dashboard</RouterLink>
               </Tab>
               <Tab>
-                <RouterLink to="/login">Login</RouterLink>
+                <RouterLink to="/login">Login/Sign Up</RouterLink>
               </Tab>
               <Tab>
-                <RouterLink to="/signup">Sign Up</RouterLink>
+                <RouterLink to="/logout">Logout</RouterLink>
               </Tab>
             </TabList>
           </Tabs>
