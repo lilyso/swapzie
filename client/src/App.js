@@ -12,8 +12,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Home from "./pages/Home";
 import Swap from "./pages/Swap";
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import Signup from "./pages/Signup";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -45,6 +47,8 @@ function App() {
             <Route exact path="/about" element={<Home />} />
             <Route exact path="/swap" element={<Swap />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<Signup />} />
           </Routes>
           <Footer />
         </Router>
