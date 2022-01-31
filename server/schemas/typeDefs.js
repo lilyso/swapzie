@@ -19,8 +19,8 @@ const typeDefs = gql`
     title: String
     description: String
     image: String
-    category: ID
-    user: ID
+    category: Category
+    user: User
     comments: [String]
   }
 

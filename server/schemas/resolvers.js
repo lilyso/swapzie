@@ -23,7 +23,10 @@ const resolvers = {
       return await Post.find(params).populate("category");
     },
     post: async (parent, { _id }) => {
-      return await Post.findById(_id).populate("category", "name").exec();
+      return await Post.findById(_id)
+        .populate("category")
+        .populate("user")
+        .exec();
     },
     user: async (parent, args, context) => {
       if (context.user) {

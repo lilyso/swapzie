@@ -27,9 +27,6 @@ function Nav() {
                   <RouterLink to="/dashboard">Dashboard</RouterLink>
                 </Tab>
                 <Tab>
-                  <RouterLink to="/login">Login/Sign Up</RouterLink>
-                </Tab>
-                <Tab>
                   <a href="/" onClick={() => Auth.logout()}>
                     Logout
                   </a>

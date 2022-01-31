@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
-// import { useMutation } from '@apollo/client';
-// import Auth from '../utils/auth';
-// import { ADD_USER } from '../utils/mutations';
+import { useMutation } from "@apollo/client";
+import Auth from "../utils/auth";
+import { ADD_USER } from "../utils/mutations";
 import {
   FormControl,
   FormLabel,
@@ -15,32 +15,31 @@ import {
   Tab,
 } from "@chakra-ui/react";
 
-function Signup() {
-  // function Signup(props) {
-  //   const [formState, setFormState] = useState({ email: '', password: '' });
-  //   const [addUser] = useMutation(ADD_USER);
+function Signup(props) {
+  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [addUser] = useMutation(ADD_USER);
 
-  //   const handleFormSubmit = async (event) => {
-  // event.preventDefault();
-  //     const mutationResponse = await addUser({
-  //       variables: {
-  //         email: formState.email,
-  //         password: formState.password,
-  //         firstName: formState.firstName,
-  //         lastName: formState.lastName,
-  //       },
-  //     });
-  //     const token = mutationResponse.data.addUser.token;
-  //     Auth.login(token);
-  //   };
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const mutationResponse = await addUser({
+      variables: {
+        email: formState.email,
+        password: formState.password,
+        firstName: formState.firstName,
+        lastName: formState.lastName,
+      },
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+  };
 
-  //   const handleChange = (event) => {
-  //     const { name, value } = event.target;
-  //     setFormState({
-  //       ...formState,
-  //       [name]: value,
-  //     });
-  //   };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
   return (
     <>
@@ -57,42 +56,43 @@ function Signup() {
               </Tab>
             </TabList>
           </Tabs>
-          <form>
-            {/* <form onSubmit={handleFormSubmit}> */}
-            <FormLabel htmlFor="firstName">First Name:</FormLabel>
-            <Input
-              mb={4}
-              name="firstName"
-              type="firstName"
-              id="firstName"
-              // onChange={handleChange}
-            />
-            <FormLabel htmlFor="lastName">Last Name:</FormLabel>
-            <Input
-              mb={4}
-              name="lastName"
-              type="lastName"
-              id="lastName"
-              // onChange={handleChange}
-            />
-            <FormLabel htmlFor="email">Email:</FormLabel>
-            <Input
-              mb={4}
-              name="email"
-              type="email"
-              id="email"
-              // onChange={handleChange}
-            />
-            <FormLabel htmlFor="pwd">Password:</FormLabel>
-            <Input
-              mb={4}
-              placeholder="******"
-              name="password"
-              type="password"
-              id="pwd"
-              // onChange={handleChange}
-            />
-            <Button type="submit">Submit</Button>
+          <form onSubmit={handleFormSubmit}>
+            <FormControl>
+              <FormLabel htmlFor="firstName">First Name:</FormLabel>
+              <Input
+                mb={4}
+                name="firstName"
+                type="firstName"
+                id="firstName"
+                onChange={handleChange}
+              />
+              <FormLabel htmlFor="lastName">Last Name:</FormLabel>
+              <Input
+                mb={4}
+                name="lastName"
+                type="lastName"
+                id="lastName"
+                onChange={handleChange}
+              />
+              <FormLabel htmlFor="email">Email:</FormLabel>
+              <Input
+                mb={4}
+                name="email"
+                type="email"
+                id="email"
+                onChange={handleChange}
+              />
+              <FormLabel htmlFor="pwd">Password:</FormLabel>
+              <Input
+                mb={4}
+                placeholder="******"
+                name="password"
+                type="password"
+                id="pwd"
+                onChange={handleChange}
+              />
+              <Button type="submit">Submit</Button>
+            </FormControl>
           </form>
         </Box>
       </Center>

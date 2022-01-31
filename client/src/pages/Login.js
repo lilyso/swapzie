@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import {
   FormControl,
   FormLabel,
@@ -10,36 +10,36 @@ import {
   Tabs,
   TabList,
   Tab,
+  Text,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
-// import { LOGIN } from "../utils/mutations";
-// import Auth from "../utils/auth";
+import { LOGIN } from "../utils/mutations";
+import Auth from "../utils/auth";
 
-// function Login(props) {
-//   const [formState, setFormState] = useState({ email: "", password: "" });
-//   const [login, { error }] = useMutation(LOGIN);
-function Login() {
-  //   const handleFormSubmit = async (event) => {
-  //     event.preventDefault();
-  //     try {
-  //       const mutationResponse = await login({
-  //         variables: { email: formState.email, password: formState.password },
-  //       });
-  //       const token = mutationResponse.data.login.token;
-  //       Auth.login(token);
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
+function Login(props) {
+  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [login, { error }] = useMutation(LOGIN);
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
+      });
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  //   const handleChange = (event) => {
-  //     const { name, value } = event.target;
-  //     setFormState({
-  //       ...formState,
-  //       [name]: value,
-  //     });
-  //   };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
   return (
     <>
@@ -56,8 +56,7 @@ function Login() {
               </Tab>
             </TabList>
           </Tabs>
-          <form>
-            {/* <form onSubmit={handleFormSubmit}> */}
+          <form onSubmit={handleFormSubmit}>
             <FormControl>
               <FormLabel htmlFor="email">Email:</FormLabel>
               <Input
@@ -65,7 +64,7 @@ function Login() {
                 name="email"
                 type="email"
                 id="email"
-                //   onChange={handleChange}
+                onChange={handleChange}
               />
             </FormControl>
             <FormLabel htmlFor="pwd">Password:</FormLabel>
@@ -75,15 +74,15 @@ function Login() {
               name="password"
               type="password"
               id="pwd"
-              //   onChange={handleChange}
+              onChange={handleChange}
             />
-            {/* {error ? (
-            <div>
-              <p className="error-text">
-                The provided credentials are incorrect
-              </p>
-            </div>
-          ) : null} */}
+            {error ? (
+              <Text mb={4}>
+                <p className="error-text">
+                  The email or password you provided is incorrect
+                </p>
+              </Text>
+            ) : null}
             <Button mb={4} type="submit">
               Submit
             </Button>
@@ -93,6 +92,5 @@ function Login() {
     </>
   );
 }
-// }
 
 export default Login;
