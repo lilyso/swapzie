@@ -5,33 +5,29 @@ import {
   Box,
   Heading,
   Text,
-  Flex,
+  Wrap,
   Center,
   Button,
 } from "@chakra-ui/react";
+import { QUERY_POSTS } from "../utils/queries";
+import { useQuery } from "@apollo/client";
+import Post from "../components/Post";
 
-const Swap = () => {
+const Dashboard = () => {
+  const { loading, data } = useQuery(QUERY_POSTS);
+  const posts = data?.posts || [];
   return (
-    <div>
+    <>
       <Center>
         <Heading p={4}>Swap</Heading>
       </Center>
-      <Flex>
-        <Box mx={4} p={4} borderWidth="1px" borderRadius="lg">
-          POST
-          <Center>
-            <Button>BUTTON</Button>
-          </Center>
-        </Box>
-        <Box mx={4} p={4} borderWidth="1px" borderRadius="lg">
-          POST
-          <Center>
-            <Button>BUTTON</Button>
-          </Center>
-        </Box>
-      </Flex>
-    </div>
+      <Box p={4}>
+        <Wrap>
+          {loading ? <Text>Loading...</Text> : <Post posts={posts} />}
+        </Wrap>
+      </Box>
+    </>
   );
 };
 
-export default Swap;
+export default Dashboard;

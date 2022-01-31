@@ -6,7 +6,7 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    posts: [String]
+    posts: [Post]
     swaps: [Post]
   }
 
