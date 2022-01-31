@@ -25,6 +25,7 @@ const userSchema = new Schema({
     minlength: 5,
   },
   posts: [postSchema],
+  swaps: [postSchema], // Check this
 });
 
 // set up pre-save middleware to create password

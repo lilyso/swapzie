@@ -18,6 +18,9 @@ const postSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Category",
   },
+  location: {
+    type: String,
+  },
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -25,6 +28,7 @@ const postSchema = new Schema({
   dateCreated: {
     type: Date,
     default: Date.Now,
+    required: true,
   },
   comments: [commentSchema],
 });

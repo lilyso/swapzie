@@ -7,6 +7,7 @@ const typeDefs = gql`
     lastName: String
     email: String
     posts: [String]
+    swaps: [Post]
   }
 
   type Category {
@@ -20,6 +21,7 @@ const typeDefs = gql`
     description: String
     image: String
     category: Category
+    location: String
     user: User
     comments: [String]
   }

@@ -25,7 +25,7 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return await Post.findById(_id)
         .populate("category")
-        .populate("user")
+        .populate("user") //add comment
         .exec();
     },
     user: async (parent, args, context) => {

@@ -9,28 +9,20 @@ import {
   Center,
   Button,
 } from "@chakra-ui/react";
+import { QUERY_POSTS } from "../utils/queries";
+import { useQuery } from "@apollo/client";
+import Post from "../components/Post";
 
 const Dashboard = () => {
+  const { loading, data } = useQuery(QUERY_POSTS);
+  const posts = data?.posts || [];
   return (
-    <div>
+    <>
       <Center>
         <Heading p={4}>Dashboard</Heading>
       </Center>
-      <Flex>
-        <Box mx={4} p={4} borderWidth="1px" borderRadius="lg">
-          POST
-          <Center>
-            <Button>BUTTON</Button>
-          </Center>
-        </Box>
-        <Box mx={4} p={4} borderWidth="1px" borderRadius="lg">
-          POST
-          <Center>
-            <Button>BUTTON</Button>
-          </Center>
-        </Box>
-      </Flex>
-    </div>
+      <Flex>{loading ? <Text>Loading...</Text> : <Post posts={posts} />}</Flex>
+    </>
   );
 };
 
