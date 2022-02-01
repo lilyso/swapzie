@@ -23,6 +23,7 @@ function Footer() {
           <Link px={4}>FAQ</Link>
           <Link px={4}>Contact</Link>
           <Link px={4}>Terms &amp; Conditions</Link>
+          <Link px={4}>Donate</Link>
         </Wrap>
       </Box>
       <Center>

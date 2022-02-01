@@ -35,3 +35,32 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const NEW_POST = gql`
+  mutation newPost(
+    $title: String!
+    $description: String
+    $image: String
+    $category: ID!
+    $location: String!
+    $user: ID!
+  ) {
+    newPost(
+      title: $title
+      description: $description
+      image: $image
+      category: $category
+      location: $location
+      user: $user
+    ) {
+      _id
+      title
+      description
+      image
+      category
+      location
+      user
+      comments
+    }
+  }
+`;

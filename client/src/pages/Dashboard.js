@@ -9,19 +9,21 @@ import {
   Center,
   Button,
 } from "@chakra-ui/react";
-import { QUERY_POSTS } from "../utils/queries";
-import { useQuery } from "@apollo/client";
-import Post from "../components/Post";
+// import { QUERY_POSTS } from "../utils/queries";
+// import { useQuery } from "@apollo/client";
+import PostForm from "../components/PostForm";
 
 const Dashboard = () => {
-  const { loading, data } = useQuery(QUERY_POSTS);
-  const posts = data?.posts || [];
+  // const { loading, data } = useQuery(QUERY_POSTS);
+  // const posts = data?.posts || [];
   return (
     <>
       <Center>
         <Heading p={4}>Dashboard</Heading>
       </Center>
-      <Flex>{loading ? <Text>Loading...</Text> : <Post posts={posts} />}</Flex>
+      <Box>
+        <PostForm />
+      </Box>
     </>
   );
 };

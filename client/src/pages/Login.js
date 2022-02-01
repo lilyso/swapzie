@@ -66,26 +66,27 @@ function Login(props) {
                 id="email"
                 onChange={handleChange}
               />
+
+              <FormLabel htmlFor="pwd">Password:</FormLabel>
+              <Input
+                mb={4}
+                placeholder="******"
+                name="password"
+                type="password"
+                id="pwd"
+                onChange={handleChange}
+              />
+              {error ? (
+                <Text mb={4}>
+                  <p className="error-text">
+                    The email or password you provided is incorrect
+                  </p>
+                </Text>
+              ) : null}
+              <Button mb={4} type="submit">
+                Submit
+              </Button>
             </FormControl>
-            <FormLabel htmlFor="pwd">Password:</FormLabel>
-            <Input
-              mb={4}
-              placeholder="******"
-              name="password"
-              type="password"
-              id="pwd"
-              onChange={handleChange}
-            />
-            {error ? (
-              <Text mb={4}>
-                <p className="error-text">
-                  The email or password you provided is incorrect
-                </p>
-              </Text>
-            ) : null}
-            <Button mb={4} type="submit">
-              Submit
-            </Button>
           </form>
         </Box>
       </Center>
