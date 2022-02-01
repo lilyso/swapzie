@@ -9,20 +9,20 @@ import {
   Center,
   Button,
 } from "@chakra-ui/react";
-// import { QUERY_POSTS } from "../utils/queries";
-// import { useQuery } from "@apollo/client";
+import { QUERY_CATEGORIES } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 import PostForm from "../components/PostForm";
 
 const Dashboard = () => {
-  // const { loading, data } = useQuery(QUERY_POSTS);
-  // const posts = data?.posts || [];
+  const { loading, data } = useQuery(QUERY_CATEGORIES);
+  const categories = data?.categories || [];
   return (
     <>
       <Center>
         <Heading p={4}>Dashboard</Heading>
       </Center>
       <Box>
-        <PostForm />
+        <PostForm categories={categories} />
       </Box>
     </>
   );

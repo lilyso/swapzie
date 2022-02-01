@@ -7,57 +7,60 @@ import {
   Box,
   Center,
   Input,
-  Tabs,
-  TabList,
-  Tab,
   Text,
   Textarea,
   Select,
 } from "@chakra-ui/react";
-// import { Link as RouterLink } from "react-router-dom";
-// import { NEW_POST } from "../utils/mutations";
-// import Auth from "../utils/auth";
+import { NEW_POST } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 
-function newPost() {
-  // const [formState, setFormState] = useState({
-  //   title: "",
-  //   description: "",
-  //   image: "",
-  //   category: "",
-  //   location: "",
-  // });
-  // const [newPost, { error }] = useMutation(NEW_POST);
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const mutationResponse = await newPost({
-  //       variables: {
-  //         title: formState.title,
-  //         description: formState.description,
-  //       },
-  //     });
-  //     const token = mutationResponse.data.login.token;
-  //     Auth.login(token);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
+const NewPost = ({ categories }) => {
+  const [formState, setFormState] = useState({
+    title: "",
+    description: "",
+    image: "",
+    category: "",
+    location: "",
+  });
+  const [newPost, { error }] = useMutation(NEW_POST);
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const profile = Auth.getProfile();
+    console.log("profile", profile);
+    try {
+      const mutationResponse = await newPost({
+        variables: {
+          title: formState.title,
+          description: formState.description,
+          image: formState.image,
+          category: formState.category,
+          location: formState.location,
+          user: profile.data._id,
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value,
-  //   });
-  // };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name, value, formState, {
+      ...formState,
+      [name]: value,
+    });
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
   return (
     <>
       <Center>
         <Box mt={8}>
           <Text pb={4}>Create new post</Text>
-          <form>
-            {/* <form onSubmit={handleFormSubmit}> */}
+          <form onSubmit={handleFormSubmit}>
             <FormControl>
               <FormLabel htmlFor="title">Title</FormLabel>
               <Input
@@ -65,7 +68,7 @@ function newPost() {
                 name="title"
                 type="title"
                 id="title"
-                // onChange={handleChange}
+                onChange={handleChange}
               />
 
               <FormLabel htmlFor="description">Description</FormLabel>
@@ -75,7 +78,7 @@ function newPost() {
                 name="description"
                 type="description"
                 id="description"
-                // onChange={handleChange}
+                onChange={handleChange}
               />
               {/* {error ? (
               <Text mb={4}>
@@ -84,18 +87,26 @@ function newPost() {
                 </p>
               </Text>
             ) : null} */}
-              <Select mb={4} placeholder="Select Category">
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+              <Select
+                onChange={handleChange}
+                name="category"
+                mb={4}
+                placeholder="Select Category"
+              >
+                {categories &&
+                  categories.map((category) => (
+                    <option key={category._id} value={category.name}>
+                      {category.name}
+                    </option>
+                  ))}
               </Select>
               <FormLabel htmlFor="location">Location</FormLabel>
               <Input
                 mb={4}
                 name="location"
-                type="tlocation"
+                type="location"
                 id="location"
-                // onChange={handleChange}
+                onChange={handleChange}
               />
               <Button color="white" bgColor="#1a535c" mb={4} type="submit">
                 Post
@@ -106,6 +117,6 @@ function newPost() {
       </Center>
     </>
   );
-}
+};
 
-export default newPost;
+export default NewPost;
