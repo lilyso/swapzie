@@ -47,6 +47,12 @@ const resolvers = {
 
       return { token, user };
     },
+    newPost: async (parent, args) => {
+      console.log(args);
+      const newPost = await Post.create(args);
+      console.log("newpost", newPost);
+      return newPost;
+    },
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {

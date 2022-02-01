@@ -53,6 +53,15 @@ const typeDefs = gql`
     ): User
     updatePost(_id: ID!, quantity: Int!): Post
     login(email: String!, password: String!): Auth
+    newPost(
+      title: String
+      description: String
+      image: String
+      category: ID
+      location: String
+      user: ID
+      comments: [String]
+    ): Post
   }
 `;
 

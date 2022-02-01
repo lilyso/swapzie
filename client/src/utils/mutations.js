@@ -57,9 +57,13 @@ export const NEW_POST = gql`
       title
       description
       image
-      category
+      category {
+        name
+      }
       location
-      user
+      user {
+        _id
+      }
       comments
     }
   }
