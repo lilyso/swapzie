@@ -7,47 +7,55 @@ function Nav() {
   if (Auth.loggedIn()) {
     return (
       <header>
-        <Box p={4} bgColor="#f7fff7">
-          <Flex>
-            <Image
-              src="./images/swapzie-logo-200.png"
-              alt="swapzie logo"
-              h="100"
-            ></Image>
-            <Spacer />
-            <Tabs color="#1a535c" variant="unstyled" pt={8}>
-              <TabList>
-                <Tab>
-                  <RouterLink to="/about">About</RouterLink>
-                </Tab>
-                <Tab>
-                  <RouterLink to="/swap">Swap</RouterLink>
-                </Tab>
-                <Tab>
-                  <RouterLink to="/dashboard">Dashboard</RouterLink>
-                </Tab>
-                <Tab>
-                  <a href="/" onClick={() => Auth.logout()}>
-                    Logout
-                  </a>
-                </Tab>
-              </TabList>
-            </Tabs>
-          </Flex>
+        <Box
+          display={{ base: "block", md: "flex", lg: "flex" }}
+          align="center"
+          p={4}
+          bgColor="#f7fff7"
+        >
+          <Image
+            h="100"
+            src="./images/swapzie-logo-200.png"
+            alt="swapzie logo"
+          ></Image>
+          <Spacer />
+          <Tabs color="#1a535c" variant="unstyled" pt={8}>
+            <TabList>
+              <Tab>
+                <RouterLink to="/about">About</RouterLink>
+              </Tab>
+              <Tab>
+                <RouterLink to="/swap">Swap</RouterLink>
+              </Tab>
+              <Tab>
+                <RouterLink to="/dashboard">Dashboard</RouterLink>
+              </Tab>
+              <Tab>
+                <a href="/" onClick={() => Auth.logout()}>
+                  Logout
+                </a>
+              </Tab>
+            </TabList>
+          </Tabs>
         </Box>
       </header>
     );
   } else {
     return (
       <header>
-        <Box p={4} bgColor="#f7fff7">
-          <Flex>
-            <Image
-              src="./images/swapzie-logo-200.png"
-              alt="swapzie logo"
-              h="100"
-            ></Image>
-            <Spacer />
+        <Box
+          display={{ base: "block", md: "flex", lg: "flex" }}
+          align="center"
+          p={4}
+          bgColor="#f7fff7"
+        >
+          <Image
+            src="./images/swapzie-logo-200.png"
+            alt="swapzie logo"
+            h="100"
+          ></Image>
+          <Spacer />
+          <Box justify="center">
             <Tabs color="#1a535c" variant="unstyled" pt={8}>
               <TabList>
                 <Tab>
@@ -61,7 +69,7 @@ function Nav() {
                 </Tab>
               </TabList>
             </Tabs>
-          </Flex>
+          </Box>
         </Box>
       </header>
     );

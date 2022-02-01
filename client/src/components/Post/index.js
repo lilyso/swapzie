@@ -15,13 +15,25 @@ const Post = ({ posts }) => {
             p={4}
             key={post._id}
           >
-            <Heading size="sm">{post.title}</Heading>
-            <Text>{post.location}</Text>
-            <Text py={4}>{post.description}</Text>
+            {post.image ? (
+              <Image mb={4} src="post.image" />
+            ) : (
+              <Image mb={4} src="./images/no-image.png" />
+            )}
+            <Heading h="50px" size="md">
+              {post.title}
+            </Heading>
+            <Text>
+              {post.location}, {post.category.name}
+            </Text>
+            <Text h={120} py={4}>
+              {post.description}
+            </Text>
             {/* <Text>Posted by {post.user.firstName} on 31/2/21</Text> */}
-            <Text>{post.category.name}</Text>
             <Center>
-              <Button>Swap</Button>
+              <Button color="white" bgColor="#1a535c" data-id={post._id}>
+                Swap
+              </Button>
             </Center>
           </Box>
         ))}

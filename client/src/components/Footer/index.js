@@ -5,6 +5,7 @@ import {
   Box,
   Heading,
   Text,
+  Wrap,
   Flex,
   Center,
   Link,
@@ -13,19 +14,19 @@ import {
 function Footer() {
   return (
     <Box mt={8} py={8} bgColor="#1a535c">
-      <Box p={8} color="white">
-        <Center>
+      <Box display="flex" p={8} color="white">
+        <Wrap justify="center">
           <Link px={4}>About</Link>
           <Link px={4}>Swap</Link>
           <Link px={4}>Dashboard</Link>
-          <Link px={4}>Terms &amp; Conditions</Link>
           <Link px={4}>Privacy Policy</Link>
           <Link px={4}>FAQ</Link>
           <Link px={4}>Contact</Link>
-        </Center>
+          <Link px={4}>Terms &amp; Conditions</Link>
+        </Wrap>
       </Box>
       <Center>
-        <Flex>
+        <Box display="flex" mb={4}>
           <Image
             px={4}
             src="images/f_logo_RGB-White_72.png"
@@ -41,7 +42,7 @@ function Footer() {
             src="images/instagram-glyph-logo_May2016.png"
             alt="instagram logo"
           ></Image>
-        </Flex>
+        </Box>
       </Center>
     </Box>
   );

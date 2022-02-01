@@ -51,7 +51,7 @@ const Home = () => {
               How it works
             </Heading>
           </Center>
-          <Flex mx={4}>
+          <Box mx={4} display={{ base: "block", md: "flex", lg: "flex" }}>
             <Text p={4}>
               Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
               Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum
@@ -73,9 +73,8 @@ const Home = () => {
               Pellentesque in ipsum id orci porta dapibus. Donec sollicitudin
               molestie malesuada.
             </Text>
-          </Flex>
+          </Box>
         </Box>
-        );
       </RouterLink>
     </div>
   );
