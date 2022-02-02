@@ -15,6 +15,9 @@ const postSchema = new Schema(
     image: {
       type: String,
     },
+    age: {
+      type: String,
+    },
     category: {
       type: Schema.Types.ObjectId,
       ref: "Category",
@@ -26,11 +29,10 @@ const postSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    // dateCreated: {
-    //   type: Date,
-    //   default: Date.Now,
-    //   required: true,
-    // },
+    claimedBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
     comments: [commentSchema],
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }

@@ -24,8 +24,18 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  posts: [postSchema],
-  swaps: [postSchema], // Check this
+  posts: {
+    type: Schema.Types.ObjectId,
+    ref: "Post",
+  },
+  claimed: {
+    type: Schema.Types.ObjectId,
+    ref: "Post",
+  },
+  comments: {
+    type: Schema.Types.ObjectId,
+    ref: "Post",
+  },
 });
 
 // set up pre-save middleware to create password

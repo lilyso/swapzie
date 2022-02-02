@@ -7,10 +7,16 @@ const typeDefs = gql`
     lastName: String
     email: String
     posts: [Post]
-    swaps: [Post]
+    claimed: [Post]
+    comments: [Post]
   }
 
   type Category {
+    _id: ID
+    name: String
+  }
+
+  input CategoryInput {
     _id: ID
     name: String
   }
@@ -20,10 +26,26 @@ const typeDefs = gql`
     title: String
     description: String
     image: String
+    age: String
     category: Category
     location: String
     user: User
-    comments: [String]
+    claimedBy: ID
+    comments: [Comment]
+    created_at: MyType
+  }
+
+  type Comment {
+    post: ID
+    user: ID
+    comment: String
+    created_at: MyType
+  }
+
+  scalar Date
+
+  type MyType {
+    created: Date
   }
 
   type Auth {
@@ -46,22 +68,29 @@ const typeDefs = gql`
       password: String!
     ): Auth
     updateUser(
-      firstName: String
-      lastName: String
-      email: String
-      password: String
+      firstName: String!
+      lastName: String!
+      email: String!
+      password: String!
     ): User
-    updatePost(_id: ID!, quantity: Int!): Post
-    login(email: String!, password: String!): Auth
-    newPost(
-      title: String
+    updatePost(
+      title: String!
       description: String
       image: String
-      category: ID
-      location: String
-      user: ID
-      comments: [String]
+      category: CategoryInput!
+      location: String!
     ): Post
+    login(email: String!, password: String!): Auth
+    newPost(
+      title: String!
+      description: String
+      image: String
+      category: CategoryInput!
+      location: String!
+      user: ID!
+    ): Post
+    addComment(user: ID!, comment: String!): Comment
+    updateComment(user: ID!, comment: String!): Comment
   }
 `;
 

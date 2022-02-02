@@ -10,15 +10,18 @@ import {
   Text,
   Textarea,
   Select,
+  Image,
 } from "@chakra-ui/react";
 import { NEW_POST } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import Upload from "../Cloudinary/Upload";
 
 const NewPost = ({ categories }) => {
   const [formState, setFormState] = useState({
     title: "",
     description: "",
     image: "",
+    age: "",
     category: "",
     location: "",
   });
@@ -33,6 +36,7 @@ const NewPost = ({ categories }) => {
           title: formState.title,
           description: formState.description,
           image: formState.image,
+          age: formState.image,
           category: formState.category,
           location: formState.location,
           user: profile.data._id,
@@ -59,9 +63,10 @@ const NewPost = ({ categories }) => {
     <>
       <Center>
         <Box mt={8}>
-          <Text pb={4}>Create new post</Text>
+          <Text pb={4}>Create new post:</Text>
           <form onSubmit={handleFormSubmit}>
             <FormControl>
+              <Upload />
               <FormLabel htmlFor="title">Title</FormLabel>
               <Input
                 mb={4}
@@ -87,6 +92,20 @@ const NewPost = ({ categories }) => {
                 </p>
               </Text>
             ) : null} */}
+              <Select
+                onChange={handleChange}
+                name="age"
+                mb={4}
+                placeholder="Select Age"
+              >
+                <option value="0-6m">0-6m</option>
+                <option value="6-12m">6-12m</option>
+                <option value="1-2yo">1-2yo</option>
+                <option value="3-4yo">3-4yo</option>
+                <option value="5-6yo">5-6yo</option>
+                <option value="7-9yo">7-9yo</option>
+                <option value="10-12yo">10-12yo</option>
+              </Select>
               <Select
                 onChange={handleChange}
                 name="category"

@@ -25,7 +25,7 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return await Post.findById(_id)
         .populate("category")
-        .populate("user") //add comment
+        .populate("user")
         .exec();
     },
     user: async (parent, args, context) => {
@@ -47,12 +47,6 @@ const resolvers = {
 
       return { token, user };
     },
-    newPost: async (parent, args) => {
-      console.log(args);
-      const newPost = await Post.create(args);
-      console.log("newpost", newPost);
-      return newPost;
-    },
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
@@ -61,6 +55,12 @@ const resolvers = {
       }
 
       throw new AuthenticationError("Not logged in");
+    },
+    newPost: async (parent, args) => {
+      console.log(args);
+      const newPost = await Post.create(args);
+      console.log("newpost", newPost);
+      return newPost;
     },
     updatePost: async (parent, {}) => {
       return await Post.findByIdAndUpdate(_id, args, { new: true });
@@ -84,5 +84,6 @@ const resolvers = {
     },
   },
 };
-
+//addComment
+//updateComment
 module.exports = resolvers;
