@@ -1,7 +1,15 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link as RouterLink } from "react-router-dom";
-import { Tabs, TabList, Tab, Image, Flex, Spacer, Box } from "@chakra-ui/react";
+import {
+  Tabs,
+  TabList,
+  Tab,
+  Image,
+  Center,
+  Spacer,
+  Box,
+} from "@chakra-ui/react";
 
 function Nav() {
   if (Auth.loggedIn()) {
@@ -55,21 +63,23 @@ function Nav() {
             h="100"
           ></Image>
           <Spacer />
-          <Box justify="center">
-            <Tabs color="#1a535c" variant="unstyled" pt={8}>
-              <TabList>
-                <Tab>
-                  <RouterLink to="/about">About</RouterLink>
-                </Tab>
-                <Tab>
-                  <RouterLink to="/swap">Swap</RouterLink>
-                </Tab>
-                <Tab>
-                  <RouterLink to="/login">Login/Sign Up</RouterLink>
-                </Tab>
-              </TabList>
-            </Tabs>
-          </Box>
+          <Center>
+            <Box>
+              <Tabs color="#1a535c" variant="unstyled" pt={8}>
+                <TabList>
+                  <Tab>
+                    <RouterLink to="/about">About</RouterLink>
+                  </Tab>
+                  <Tab>
+                    <RouterLink to="/swap">Swap</RouterLink>
+                  </Tab>
+                  <Tab>
+                    <RouterLink to="/login">Login/Sign Up</RouterLink>
+                  </Tab>
+                </TabList>
+              </Tabs>
+            </Box>
+          </Center>
         </Box>
       </header>
     );

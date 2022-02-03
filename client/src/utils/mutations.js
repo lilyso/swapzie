@@ -41,6 +41,7 @@ export const NEW_POST = gql`
     $title: String!
     $description: String
     $image: String
+    $age: String
     $category: ID!
     $location: String!
     $user: ID!
@@ -49,6 +50,7 @@ export const NEW_POST = gql`
       title: $title
       description: $description
       image: $image
+      age: $age
       category: $category
       location: $location
       user: $user
@@ -57,14 +59,14 @@ export const NEW_POST = gql`
       title
       description
       image
+      age
       category {
-        name
+        _id
       }
       location
       user {
         _id
       }
-      comments
     }
   }
 `;

@@ -33,6 +33,7 @@ export const QUERY_POSTS = gql`
       title
       description
       image
+      age
       location
       category {
         name
@@ -41,7 +42,10 @@ export const QUERY_POSTS = gql`
         firstName
         lastName
       }
-      comments
+      comments {
+        user
+        comment
+      }
     }
   }
 `;

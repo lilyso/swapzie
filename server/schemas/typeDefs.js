@@ -77,7 +77,7 @@ const typeDefs = gql`
       title: String!
       description: String
       image: String
-      category: CategoryInput!
+      category: ID
       location: String!
     ): Post
     login(email: String!, password: String!): Auth
@@ -85,7 +85,8 @@ const typeDefs = gql`
       title: String!
       description: String
       image: String
-      category: CategoryInput!
+      age: String
+      category: ID!
       location: String!
       user: ID!
     ): Post

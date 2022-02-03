@@ -10,7 +10,7 @@ import {
   Text,
   Textarea,
   Select,
-  Image,
+  Img,
 } from "@chakra-ui/react";
 import { NEW_POST } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -24,22 +24,24 @@ const NewPost = ({ categories }) => {
     age: "",
     category: "",
     location: "",
+    user: "",
   });
+
   const [newPost, { error }] = useMutation(NEW_POST);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const profile = Auth.getProfile();
-    console.log("profile", profile);
+    console.log(formState);
     try {
+      const user = Auth.getProfile();
       const mutationResponse = await newPost({
         variables: {
           title: formState.title,
           description: formState.description,
           image: formState.image,
-          age: formState.image,
+          age: formState.age,
           category: formState.category,
           location: formState.location,
-          user: profile.data._id,
+          user: user.data._id,
         },
       });
     } catch (e) {
@@ -47,15 +49,40 @@ const NewPost = ({ categories }) => {
     }
   };
 
+  const getUser = async () => {
+    const profile = await Auth.getProfile();
+    setFormState(
+      {
+        ...formState,
+        user: profile.data._id,
+      },
+      console.log({ ...formState, user: profile.data._id })
+    );
+    return;
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value, formState, {
-      ...formState,
-      [name]: value,
-    });
     setFormState({
       ...formState,
       [name]: value,
+    });
+    console.log({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const updateUpload = (event) => {
+    let imageUpload = event;
+    console.log("event", event);
+    setFormState({
+      ...formState,
+      image: imageUpload,
+    });
+    console.log({
+      ...formState,
+      image: imageUpload,
     });
   };
 
@@ -66,7 +93,7 @@ const NewPost = ({ categories }) => {
           <Text pb={4}>Create new post:</Text>
           <form onSubmit={handleFormSubmit}>
             <FormControl>
-              <Upload />
+              <Upload name="image" onChange={updateUpload} />
               <FormLabel htmlFor="title">Title</FormLabel>
               <Input
                 mb={4}
@@ -114,7 +141,7 @@ const NewPost = ({ categories }) => {
               >
                 {categories &&
                   categories.map((category) => (
-                    <option key={category._id} value={category.name}>
+                    <option key={category._id} value={category._id}>
                       {category.name}
                     </option>
                   ))}
