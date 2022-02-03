@@ -30,7 +30,6 @@ export const ADD_USER = gql`
         firstName
         lastName
         email
-        posts
       }
     }
   }

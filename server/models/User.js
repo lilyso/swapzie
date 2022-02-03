@@ -30,14 +30,18 @@ const userSchema = new Schema({
       ref: "Post",
     },
   ],
-  claimed: {
-    type: Schema.Types.ObjectId,
-    ref: "Post",
-  },
-  comments: {
-    type: Schema.Types.ObjectId,
-    ref: "Post",
-  },
+  claimed: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
 });
 
 // set up pre-save middleware to create password

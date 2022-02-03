@@ -32,20 +32,14 @@ const typeDefs = gql`
     user: User
     claimedBy: ID
     comments: [Comment]
-    created_at: MyType
+    created_at: String
   }
 
   type Comment {
     post: ID
     user: ID
     comment: String
-    created_at: MyType
-  }
-
-  scalar Date
-
-  type MyType {
-    created: Date
+    created_at: String
   }
 
   type Auth {
