@@ -27,24 +27,26 @@ function Nav() {
             alt="swapzie logo"
           ></Image>
           <Spacer />
-          <Tabs color="#1a535c" variant="unstyled" pt={8}>
-            <TabList>
-              <Tab>
-                <RouterLink to="/about">About</RouterLink>
-              </Tab>
-              <Tab>
-                <RouterLink to="/swap">Swap</RouterLink>
-              </Tab>
-              <Tab>
-                <RouterLink to="/dashboard">Dashboard</RouterLink>
-              </Tab>
-              <Tab>
-                <a href="/" onClick={() => Auth.logout()}>
-                  Logout
-                </a>
-              </Tab>
-            </TabList>
-          </Tabs>
+          <Center>
+            <Tabs color="#1a535c" variant="unstyled" pt={8}>
+              <TabList>
+                <Tab>
+                  <RouterLink to="/about">About</RouterLink>
+                </Tab>
+                <Tab>
+                  <RouterLink to="/swap">Swap</RouterLink>
+                </Tab>
+                <Tab>
+                  <RouterLink to="/dashboard">Dashboard</RouterLink>
+                </Tab>
+                <Tab>
+                  <a href="/" onClick={() => Auth.logout()}>
+                    Logout
+                  </a>
+                </Tab>
+              </TabList>
+            </Tabs>
+          </Center>
         </Box>
       </header>
     );

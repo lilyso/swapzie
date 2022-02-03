@@ -16,7 +16,7 @@ const Post = ({ posts }) => {
             key={post._id}
           >
             {post.image ? (
-              <Image mb={4} src="post.image" />
+              <Image mb={4} src={post.image} />
             ) : (
               <Image mb={4} src="./images/no-image.png" />
             )}

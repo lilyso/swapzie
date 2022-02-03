@@ -59,6 +59,10 @@ const resolvers = {
     newPost: async (parent, args) => {
       console.log(args);
       const newPost = await Post.create(args);
+      const getUser = await User.findOneAndUpdate(
+        { _id: args.user },
+        { $push: { posts: newPost._id } }
+      );
       console.log("newpost", newPost);
       return newPost;
     },

@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { WidgetLoader, Widget } from "react-cloudinary-upload-widget";
 import { Center, Button, Box, Image } from "@chakra-ui/react";
 
 export default function Upload({ onChange }) {
   const wid = React.useRef();
-  const cloudName = "dwxel7sok";
-  const uploadPreset = "kxwpus9q";
+  const cloudName = process.env.CLOUD_NAME;
+  const uploadPreset = process.env.UPLOAD_PRESET;
+  const [image, setImage] = useState(null);
 
   const showWidget = () => {
     const myWidget =
@@ -35,6 +36,7 @@ export default function Upload({ onChange }) {
           if (!error && result && result.event === "success") {
             console.log("Done! Here is the image info: ", result.info);
             onChange(result.info.secure_url);
+            setImage(result.info.secure_url);
             document
               .getElementById("uploadedimage")
               .setAttribute("src", result.info.secure_url);
@@ -55,7 +57,11 @@ export default function Upload({ onChange }) {
       borderRadius="10"
       borderColor="gray.300"
     >
-      <Image maxH="100" id="uploadedimage" src="" alt="upload" />
+      {image && (
+        <Center>
+          <Image maxH="100" id="uploadedimage" src="" alt="upload" />
+        </Center>
+      )}
       <Center>
         <Button onClick={() => showWidget()}>Upload image</Button>
       </Center>

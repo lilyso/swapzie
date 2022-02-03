@@ -24,10 +24,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  posts: {
-    type: Schema.Types.ObjectId,
-    ref: "Post",
-  },
+  posts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
   claimed: {
     type: Schema.Types.ObjectId,
     ref: "Post",
