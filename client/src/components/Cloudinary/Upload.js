@@ -4,8 +4,8 @@ import { Center, Button, Box, Image } from "@chakra-ui/react";
 
 export default function Upload({ onChange }) {
   const wid = React.useRef();
-  const cloudName = process.env.CLOUD_NAME;
-  const uploadPreset = process.env.UPLOAD_PRESET;
+  const cloudName = "dwxel7sok";
+  const uploadPreset = "kxwpus9q";
   const [image, setImage] = useState(null);
 
   const showWidget = () => {
