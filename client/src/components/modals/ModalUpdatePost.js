@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Modal,
@@ -14,15 +14,13 @@ import {
   Textarea,
   Select,
   useDisclosure,
+  Image,
 } from "@chakra-ui/react";
 import Upload from "../Cloudinary/Upload";
 
 function UpdatePost({ categories, post }) {
-  console.log(categories);
-  console.log(post);
-
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const [image, setImage] = useState(post && post.image);
   const initialRef = React.useRef();
   const finalRef = React.useRef();
 
@@ -44,6 +42,14 @@ function UpdatePost({ categories, post }) {
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl mb={4}>
+              {image && (
+                <Image
+                  pb={4}
+                  borderRadius={10}
+                  src={image}
+                  alt={"Uploaded File"}
+                />
+              )}
               <Upload name="image" />
               <FormLabel>Title</FormLabel>
               <Input value={post.title} ref={initialRef} />

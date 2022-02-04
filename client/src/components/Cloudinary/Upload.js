@@ -58,7 +58,14 @@ export default function Upload({ onChange }) {
     >
       {image && (
         <Center>
-          <Image maxH="100" id="uploadedimage" src="" alt="upload" />
+          <Image
+            borderRadius={10}
+            pb={4}
+            maxH="200"
+            id="uploadedimage"
+            src=""
+            alt="upload"
+          />
         </Center>
       )}
       <Center>
