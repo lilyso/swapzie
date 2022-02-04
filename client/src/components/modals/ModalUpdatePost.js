@@ -17,8 +17,10 @@ import {
 } from "@chakra-ui/react";
 import Upload from "../Cloudinary/Upload";
 
-function UpdatePost({ categories }) {
-  console.log({ categories });
+function UpdatePost({ categories, post }) {
+  console.log(categories);
+  console.log(post);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = React.useRef();
@@ -44,13 +46,13 @@ function UpdatePost({ categories }) {
             <FormControl mb={4}>
               <Upload name="image" />
               <FormLabel>Title</FormLabel>
-              <Input ref={initialRef} />
+              <Input value={post.title} ref={initialRef} />
             </FormControl>
             <FormControl mb={4}>
               <FormLabel htmlFor="description">Description</FormLabel>
-              <Textarea placeholder="Write a detailed description" />
+              <Textarea value={post.description} />
             </FormControl>
-            <Select mb={4} placeholder="Select Age">
+            <Select value={post.age} mb={4} placeholder="Select Age">
               <option value="0-6m">0-6m</option>
               <option value="6-12m">6-12m</option>
               <option value="1-2yo">1-2yo</option>
@@ -59,17 +61,21 @@ function UpdatePost({ categories }) {
               <option value="7-9yo">7-9yo</option>
               <option value="10-12yo">10-12yo</option>
             </Select>
-            <Select mb={4} placeholder="Select Category">
+            <Select
+              value={post.category.name}
+              mb={4}
+              placeholder="Select Category"
+            >
               {categories &&
                 categories.map((category) => (
-                  <option key={category._id} value={category._id}>
+                  <option key={category._id} value={category.name}>
                     {category.name}
                   </option>
                 ))}
             </Select>
             <FormControl mt={4}>
               <FormLabel>Location</FormLabel>
-              <Input />
+              <Input value={post.location} />
             </FormControl>
           </ModalBody>
 

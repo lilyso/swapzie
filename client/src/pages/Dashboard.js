@@ -20,7 +20,6 @@ const Dashboard = () => {
   const categories = categoryData.data?.categories || [];
   const { loading, error, data } = useQuery(QUERY_USER_BY_ID);
   const user = data?.user;
-  console.log("userquery", user);
   return (
     <>
       <Center>

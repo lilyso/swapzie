@@ -2,11 +2,12 @@ import React from "react";
 import { Box, Center, Text, Image, Heading, Button } from "@chakra-ui/react";
 import getDate from "../../utils/date.js";
 import { DELETE_POST } from "../../utils/mutations";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import UpdatePost from "../modals/ModalUpdatePost";
 
 const UserPosts = ({ user, categories }) => {
-  const [removePost, { error }] = useMutation(DELETE_POST);
+  const removePost = useMutation(DELETE_POST);
+
   const deletePost = async (event) => {
     const postId = event.target.value;
     try {
@@ -58,7 +59,7 @@ const UserPosts = ({ user, categories }) => {
               - {getDate(post.created_at / 1000)}
             </Text>
             <Center>
-              <UpdatePost categories={categories} />
+              <UpdatePost post={post} categories={categories} />
               <Button value={post._id} onClick={deletePost} mx={4} mt={4} p={4}>
                 Delete
               </Button>
