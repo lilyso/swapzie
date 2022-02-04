@@ -9,6 +9,7 @@ const Post = ({ posts }) => {
       {posts &&
         posts.map((post) => (
           <Box
+            borderColor="#1a535c"
             borderRadius={20}
             border="1px"
             w={{ base: "100%", md: "33%", lg: "25%" }}
@@ -24,12 +25,12 @@ const Post = ({ posts }) => {
               {post.title}
             </Heading>
             <Text>
-              {post.location}, {post.category.name}
+              {post.location}, {post.category.name}, {post.age}
             </Text>
             <Text h={120} py={4}>
               {post.description}
             </Text>
-            {/* <Text>Posted by {post.user.firstName} on 31/2/21</Text> */}
+            <Text pb={4}>Posted by {post.user.firstName} on 31/2/21</Text>
             <Center>
               <Button color="white" bgColor="#1a535c" data-id={post._id}>
                 Swap

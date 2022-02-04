@@ -30,10 +30,9 @@ const resolvers = {
     },
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate("posts");
-
-        user.posts.sort((a, b) => b.dateCreated - a.dateCreated);
-
+        const user = await User.findById({ _id: context.user._id })
+          .populate("posts")
+          .populate({ path: "posts", populate: "category" });
         return user;
       }
 
@@ -65,7 +64,7 @@ const resolvers = {
       );
       console.log("newpost", newPost);
       return newPost;
-    },
+    }, // add authentification error
     updatePost: async (parent, {}) => {
       return await Post.findByIdAndUpdate(_id, args, { new: true });
     },

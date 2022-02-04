@@ -9,20 +9,26 @@ import {
   Center,
   Button,
 } from "@chakra-ui/react";
-import { QUERY_CATEGORIES } from "../utils/queries";
+import { QUERY_CATEGORIES, QUERY_USER_BY_ID } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import PostForm from "../components/PostForm";
+import Auth from "../utils/auth";
 
 const Dashboard = () => {
-  const { loading, data } = useQuery(QUERY_CATEGORIES);
-  const categories = data?.categories || [];
+  const profile = Auth.getProfile();
+  console.log(profile);
+  const categoryData = useQuery(QUERY_CATEGORIES);
+  const categories = categoryData.data?.categories || [];
+  const { loading, error, data } = useQuery(QUERY_USER_BY_ID);
+  const user = data?.user;
+  console.log("userquery", user);
   return (
     <>
       <Center>
         <Heading p={4}>Dashboard</Heading>
       </Center>
       <Box>
-        <PostForm categories={categories} />
+        <PostForm categories={categories} user={user} />
       </Box>
     </>
   );

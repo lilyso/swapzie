@@ -10,13 +10,15 @@ import {
   Text,
   Textarea,
   Select,
-  Img,
+  Image,
+  Heading,
 } from "@chakra-ui/react";
 import { NEW_POST } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import Upload from "../Cloudinary/Upload";
+import getDate from "../../utils/date.js";
 
-const NewPost = ({ categories }) => {
+const NewPost = ({ categories, user }) => {
   const [formState, setFormState] = useState({
     title: "",
     description: "",
@@ -159,6 +161,28 @@ const NewPost = ({ categories }) => {
               </Button>
             </FormControl>
           </form>
+        </Box>
+        <Box m={4} p={4} border="1px">
+          {user && user.posts.length ? (
+            user.posts.map((post) => (
+              <Box key={post._id}>
+                <Image
+                  objectFit="cover"
+                  boxSize="200px"
+                  src={post.image}
+                  alt="post feature"
+                />
+                <Heading size="md">{post.title}</Heading>
+                <Text>
+                  {post.location}, {post.category.name}, {post.age}
+                </Text>
+                <Text>{post.description}</Text>
+                <Text>{getDate(post.created_at / 1000)}</Text>
+              </Box>
+            ))
+          ) : (
+            <Box>{error}</Box>
+          )}
         </Box>
       </Center>
     </>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { WidgetLoader, Widget } from "react-cloudinary-upload-widget";
 import { Center, Button, Box, Image } from "@chakra-ui/react";
 
 export default function Upload({ onChange }) {
