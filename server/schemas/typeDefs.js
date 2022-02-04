@@ -67,6 +67,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): User
+    deletePost(_id: ID!): Post
     updatePost(
       title: String!
       description: String

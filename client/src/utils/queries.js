@@ -71,6 +71,7 @@ export const QUERY_POSTS = gql`
         user
         comment
       }
+      created_at
     }
   }
 `;

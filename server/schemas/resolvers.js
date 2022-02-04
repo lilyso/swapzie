@@ -68,6 +68,12 @@ const resolvers = {
     updatePost: async (parent, {}) => {
       return await Post.findByIdAndUpdate(_id, args, { new: true });
     },
+    deletePost: async (parent, { _id }, context) => {
+      if (context.user) {
+        return await Post.findOneAndDelete({ _id: _id });
+      }
+      throw new AuthenticationError("Not logged in");
+    },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

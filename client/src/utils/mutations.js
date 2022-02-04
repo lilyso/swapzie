@@ -35,6 +35,14 @@ export const ADD_USER = gql`
   }
 `;
 
+export const DELETE_POST = gql`
+  mutation deletePost($_id: ID!) {
+    deletePost(_id: $_id) {
+      _id
+    }
+  }
+`;
+
 export const NEW_POST = gql`
   mutation newPost(
     $title: String!

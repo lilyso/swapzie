@@ -49,8 +49,8 @@ const NewPost = ({ categories }) => {
         },
       });
       setFormState(INITIAL_FORM_STATE);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   };
 

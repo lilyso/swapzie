@@ -1,9 +1,9 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { Image, Box, Heading, Text, Button, Center } from "@chakra-ui/react";
+import getDate from "../../utils/date.js";
 
 const Post = ({ posts }) => {
-  console.log({ posts });
   return (
     <>
       {posts &&
@@ -16,31 +16,44 @@ const Post = ({ posts }) => {
             p={4}
             key={post._id}
           >
-            {post.image ? (
-              <Center>
-                <Image
-                  maxH={200}
-                  objectFit="cover"
-                  borderRadius={10}
-                  mb={4}
-                  src={post.image}
-                />
-              </Center>
-            ) : (
-              <Center>
-                <Image mb={4} src="./images/no-image.png" />
-              </Center>
-            )}
-            <Heading h="50px" size="md">
-              {post.title}
-            </Heading>
-            <Text>
-              {post.location}, {post.category.name}, {post.age}
-            </Text>
-            <Text h={120} py={4}>
-              {post.description}
-            </Text>
-            <Text pb={4}>Posted by {post.user.firstName} on 31/2/21</Text>
+            <Box minH="400">
+              {post.image ? (
+                <Center>
+                  <Image
+                    boxSize={200}
+                    objectFit="cover"
+                    borderRadius={10}
+                    mb={4}
+                    src={post.image}
+                  />
+                </Center>
+              ) : (
+                <Center>
+                  <Image
+                    boxSize={200}
+                    objectFit="cover"
+                    borderRadius={10}
+                    mb={4}
+                    src={post.image}
+                    mb={4}
+                    src="./images/no-image.png"
+                  />
+                </Center>
+              )}
+              <Heading h="50px" size="md">
+                {post.title}
+              </Heading>
+              <Text>
+                {post.location}, {post.category.name}, {post.age}
+              </Text>
+              <Text h={120} py={4}>
+                {post.description}
+              </Text>
+              <Text pb={4}>
+                Posted by {post.user.firstName} on{" "}
+                {getDate(post.created_at / 1000)}
+              </Text>
+            </Box>
             <Center>
               <Button color="white" bgColor="#1a535c" data-id={post._id}>
                 Swap
