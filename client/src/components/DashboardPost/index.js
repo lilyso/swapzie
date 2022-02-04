@@ -3,8 +3,9 @@ import { Box, Center, Text, Image, Heading, Button } from "@chakra-ui/react";
 import getDate from "../../utils/date.js";
 import { DELETE_POST } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
+import UpdatePost from "../modals/ModalUpdatePost";
 
-const UserPosts = ({ user }) => {
+const UserPosts = ({ user, categories }) => {
   const [removePost, { error }] = useMutation(DELETE_POST);
   const deletePost = async (event) => {
     const postId = event.target.value;
@@ -49,15 +50,15 @@ const UserPosts = ({ user }) => {
             <Heading h="50px" size="md">
               {post.title}
             </Heading>
-            <Text>
+            <Text mb={4}>
               {post.location}, {post.category.name}, {post.age}
             </Text>
-            <Text>{post.description}</Text>
-            <Text>{getDate(post.created_at / 1000)}</Text>
+            <Text mb={4}>{post.description}</Text>
+            <Text fontSize="sm" fontStyle="italic" mb={4}>
+              - {getDate(post.created_at / 1000)}
+            </Text>
             <Center>
-              <Button value={post._id} mx={4} mt={4} p={4}>
-                Edit
-              </Button>
+              <UpdatePost categories={categories} />
               <Button value={post._id} onClick={deletePost} mx={4} mt={4} p={4}>
                 Delete
               </Button>

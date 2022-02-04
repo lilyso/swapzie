@@ -30,7 +30,7 @@ const Dashboard = () => {
       <Box>
         <Wrap justify="center">
           <PostForm categories={categories} />
-          {user && <UserPosts user={user} />}
+          {user && <UserPosts user={user} categories={categories} />}
         </Wrap>
       </Box>
       {/* </Center> */}

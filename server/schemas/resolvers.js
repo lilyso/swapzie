@@ -55,18 +55,22 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    newPost: async (parent, args) => {
-      console.log(args);
-      const newPost = await Post.create(args);
-      const getUser = await User.findOneAndUpdate(
-        { _id: args.user },
-        { $push: { posts: newPost._id } }
-      );
-      console.log("newpost", newPost);
-      return newPost;
-    }, // add authentification error
-    updatePost: async (parent, {}) => {
-      return await Post.findByIdAndUpdate(_id, args, { new: true });
+    newPost: async (parent, args, context) => {
+      if (context.user) {
+        const newPost = await Post.create(args);
+        const getUser = await User.findOneAndUpdate(
+          { _id: args.user },
+          { $push: { posts: newPost._id } }
+        );
+        return newPost;
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    updatePost: async (parent, args, context) => {
+      if (context.user) {
+        return await Post.findByIdAndUpdate(_id, args, { new: true });
+      }
+      throw new AuthenticationError("Not logged in");
     },
     deletePost: async (parent, { _id }, context) => {
       if (context.user) {

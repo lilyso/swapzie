@@ -25,18 +25,19 @@ export const QUERY_USER_BY_ID = gql`
   }
 `;
 
-export const USER_POST_BY_ID = gql`
+export const QUERY_POST_BY_ID = gql`
   query post($_id: ID) {
     post(_id: $_id) {
       _id
       title
       description
+      image
+      age
       category {
         name
       }
       user {
-        firstName
-        lastName
+        _id
       }
     }
   }

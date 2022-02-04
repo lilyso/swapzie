@@ -72,6 +72,7 @@ const typeDefs = gql`
       title: String!
       description: String
       image: String
+      age: String
       category: ID
       location: String!
     ): Post

@@ -34,8 +34,6 @@ const Post = ({ posts }) => {
                     objectFit="cover"
                     borderRadius={10}
                     mb={4}
-                    src={post.image}
-                    mb={4}
                     src="./images/no-image.png"
                   />
                 </Center>
@@ -49,7 +47,7 @@ const Post = ({ posts }) => {
               <Text h={120} py={4}>
                 {post.description}
               </Text>
-              <Text pb={4}>
+              <Text fontSize="sm" pb={4}>
                 Posted by {post.user.firstName} on{" "}
                 {getDate(post.created_at / 1000)}
               </Text>

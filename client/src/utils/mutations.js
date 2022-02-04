@@ -77,3 +77,39 @@ export const NEW_POST = gql`
     }
   }
 `;
+
+export const UPDATE_POST = gql`
+  mutation updatePost(
+    $_id: ID!
+    $title: String!
+    $description: String
+    $image: String
+    $age: String
+    $category: ID!
+    $location: String!
+    $user: ID!
+  ) {
+    updatePost(
+      title: $title
+      description: $description
+      image: $image
+      age: $age
+      category: $category
+      location: $location
+      user: $user
+    ) {
+      _id
+      title
+      description
+      image
+      age
+      category {
+        _id
+      }
+      location
+      user {
+        _id
+      }
+    }
+  }
+`;
