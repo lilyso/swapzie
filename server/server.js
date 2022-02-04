@@ -5,13 +5,11 @@ const path = require("path");
 
 const { typeDefs, resolvers } = require("./schemas");
 const { authMiddleware } = require("./utils/auth");
-const { dateScalar } = require("./utils/date");
 const db = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
-  Date: dateScalar,
   typeDefs,
   resolvers,
   context: authMiddleware,

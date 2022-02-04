@@ -7,16 +7,15 @@ import {
   Text,
   Flex,
   Center,
-  Button,
+  Wrap,
 } from "@chakra-ui/react";
 import { QUERY_CATEGORIES, QUERY_USER_BY_ID } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import PostForm from "../components/PostForm";
+import UserPosts from "../components/DashboardPost";
 import Auth from "../utils/auth";
 
 const Dashboard = () => {
-  const profile = Auth.getProfile();
-  console.log(profile);
   const categoryData = useQuery(QUERY_CATEGORIES);
   const categories = categoryData.data?.categories || [];
   const { loading, error, data } = useQuery(QUERY_USER_BY_ID);
@@ -25,11 +24,16 @@ const Dashboard = () => {
   return (
     <>
       <Center>
-        <Heading p={4}>Dashboard</Heading>
+        {user && <Heading p={4}>Welcome back, {user.firstName}</Heading>}
       </Center>
+      {/* <Center> */}
       <Box>
-        <PostForm categories={categories} user={user} />
+        <Wrap justify="center">
+          <PostForm categories={categories} />
+          {user && <UserPosts user={user} />}
+        </Wrap>
       </Box>
+      {/* </Center> */}
     </>
   );
 };

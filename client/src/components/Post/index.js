@@ -17,9 +17,19 @@ const Post = ({ posts }) => {
             key={post._id}
           >
             {post.image ? (
-              <Image mb={4} src={post.image} />
+              <Center>
+                <Image
+                  maxH={200}
+                  objectFit="cover"
+                  borderRadius={10}
+                  mb={4}
+                  src={post.image}
+                />
+              </Center>
             ) : (
-              <Image mb={4} src="./images/no-image.png" />
+              <Center>
+                <Image mb={4} src="./images/no-image.png" />
+              </Center>
             )}
             <Heading h="50px" size="md">
               {post.title}
