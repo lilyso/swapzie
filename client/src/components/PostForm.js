@@ -75,7 +75,6 @@ const NewPost = ({ categories }) => {
   };
 
   const updateUpload = (event) => {
-    console.log(event);
     let imageUpload = event;
     setFormState({
       ...formState,

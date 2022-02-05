@@ -2,8 +2,8 @@ import React from "react";
 import { Center, Button, Box, Image } from "@chakra-ui/react";
 
 export default function Upload({ onChange, defaultImage = null }) {
-  const cloudName = "dwxel7sok";
-  const uploadPreset = "kxwpus9q";
+  const cloudName = process.env.REACT_APP_CLOUD_NAME;
+  const uploadPreset = process.env.REACT_APP_UPLOAD_PRESET;
 
   const showWidget = () => {
     const myWidget =
@@ -31,7 +31,7 @@ export default function Upload({ onChange, defaultImage = null }) {
         },
         (error, result) => {
           if (!error && result && result.event === "success") {
-            console.log("Done! Here is the image info: ", result.info);
+            console.log("Done! Image uploaded");
             onChange(result.info.secure_url);
           }
         }

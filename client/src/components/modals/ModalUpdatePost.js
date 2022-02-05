@@ -17,7 +17,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import Upload from "../cloudinary/Upload";
-import { UPDATE_POST } from "../../utils/mutations";
+import { UPDATE_POST, QUERY_USER_BY_ID } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 function UpdatePost({ categories, post }) {
