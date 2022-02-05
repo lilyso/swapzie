@@ -13,14 +13,14 @@ import {
   Image,
   Heading,
 } from "@chakra-ui/react";
-import { NEW_POST } from "../../utils/mutations";
-import Auth from "../../utils/auth";
-import Upload from "../Cloudinary/Upload";
+import { NEW_POST } from "./../utils/mutations";
+import Auth from "./../utils/auth";
+import Upload from "./cloudinary/Upload";
 
 const INITIAL_FORM_STATE = {
   title: "",
   description: "",
-  image: "",
+  image: null,
   age: "",
   category: "",
   location: "",
@@ -48,6 +48,7 @@ const NewPost = ({ categories }) => {
           user: user.data._id,
         },
       });
+
       setFormState(INITIAL_FORM_STATE);
     } catch (error) {
       console.log(error);
@@ -56,13 +57,10 @@ const NewPost = ({ categories }) => {
 
   const getUser = async () => {
     const profile = await Auth.getProfile();
-    setFormState(
-      {
-        ...formState,
-        user: profile.data._id,
-      },
-      console.log({ ...formState, user: profile.data._id })
-    );
+    setFormState({
+      ...formState,
+      user: profile.data._id,
+    });
     return;
   };
 
@@ -72,20 +70,12 @@ const NewPost = ({ categories }) => {
       ...formState,
       [name]: value,
     });
-    console.log({
-      ...formState,
-      [name]: value,
-    });
   };
 
   const updateUpload = (event) => {
+    console.log(event);
     let imageUpload = event;
-    console.log("event", event);
     setFormState({
-      ...formState,
-      image: imageUpload,
-    });
-    console.log({
       ...formState,
       image: imageUpload,
     });
@@ -97,7 +87,11 @@ const NewPost = ({ categories }) => {
         <Text p={4}>Create new post:</Text>
         <form onSubmit={handleFormSubmit}>
           <FormControl>
-            <Upload name="image" onChange={updateUpload} />
+            <Upload
+              name="image"
+              defaultImage={formState.image}
+              onChange={updateUpload}
+            />
             <FormLabel htmlFor="title">Title</FormLabel>
             <Input
               mb={4}
@@ -118,13 +112,6 @@ const NewPost = ({ categories }) => {
               id="description"
               onChange={handleChange}
             />
-            {/* {error ? (
-              <Text mb={4}>
-                <p className="error-text">
-                  The email or password you provided is incorrect
-                </p>
-              </Text>
-            ) : null} */}
             <Select
               onChange={handleChange}
               name="age"

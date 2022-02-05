@@ -66,9 +66,19 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
-    updatePost: async (parent, args, context) => {
+    updatePost: async (
+      parent,
+      { _id, title, description, image, age, category, location },
+      context
+    ) => {
       if (context.user) {
-        return await Post.findByIdAndUpdate(_id, args, { new: true });
+        return await Post.findByIdAndUpdate(
+          { _id: _id },
+          { title, description, image, age, category, location },
+          {
+            new: true,
+          }
+        );
       }
       throw new AuthenticationError("Not logged in");
     },

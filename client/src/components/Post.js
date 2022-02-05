@@ -1,7 +1,7 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { Image, Box, Heading, Text, Button, Center } from "@chakra-ui/react";
-import getDate from "../../utils/date.js";
+import getDate from "../utils/date.js";
 
 const Post = ({ posts }) => {
   return (

@@ -69,6 +69,7 @@ const typeDefs = gql`
     ): User
     deletePost(_id: ID!): Post
     updatePost(
+      _id: ID!
       title: String!
       description: String
       image: String

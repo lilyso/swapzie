@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Center, Button, Box, Image } from "@chakra-ui/react";
 
-export default function Upload({ onChange }) {
-  const wid = React.useRef();
+export default function Upload({ onChange, defaultImage = null }) {
   const cloudName = "dwxel7sok";
   const uploadPreset = "kxwpus9q";
-  const [image, setImage] = useState(null);
 
   const showWidget = () => {
     const myWidget =
@@ -35,12 +33,6 @@ export default function Upload({ onChange }) {
           if (!error && result && result.event === "success") {
             console.log("Done! Here is the image info: ", result.info);
             onChange(result.info.secure_url);
-            setImage(result.info.secure_url);
-            document
-              .getElementById("uploadedimage")
-              .setAttribute("src", result.info.secure_url);
-            // Inject cloudinary link into file
-            document.getElementById("uploadedimage").style.display = "inline";
           }
         }
       );
@@ -56,14 +48,14 @@ export default function Upload({ onChange }) {
       borderRadius="10"
       borderColor="gray.300"
     >
-      {image && (
+      {defaultImage && (
         <Center>
           <Image
             borderRadius={10}
             pb={4}
             maxH="200"
             id="uploadedimage"
-            src=""
+            src={defaultImage}
             alt="upload"
           />
         </Center>

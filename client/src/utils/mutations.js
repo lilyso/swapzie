@@ -87,16 +87,15 @@ export const UPDATE_POST = gql`
     $age: String
     $category: ID!
     $location: String!
-    $user: ID!
   ) {
     updatePost(
+      _id: $_id
       title: $title
       description: $description
       image: $image
       age: $age
       category: $category
       location: $location
-      user: $user
     ) {
       _id
       title

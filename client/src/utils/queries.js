@@ -12,6 +12,7 @@ export const QUERY_USER_BY_ID = gql`
         image
         age
         category {
+          _id
           name
         }
         location
