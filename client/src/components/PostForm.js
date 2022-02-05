@@ -14,6 +14,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { NEW_POST } from "./../utils/mutations";
+import { QUERY_USER_BY_ID } from "./../utils/queries";
 import Auth from "./../utils/auth";
 import Upload from "./cloudinary/Upload";
 
@@ -24,13 +25,14 @@ const INITIAL_FORM_STATE = {
   age: "",
   category: "",
   location: "",
-  user: "",
 };
 
 const NewPost = ({ categories }) => {
   const [formState, setFormState] = useState(INITIAL_FORM_STATE);
 
-  const [newPost, { error }] = useMutation(NEW_POST);
+  const [newPost, { error }] = useMutation(NEW_POST, {
+    refetchQueries: [{ query: QUERY_USER_BY_ID }],
+  });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
