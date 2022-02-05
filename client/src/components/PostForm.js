@@ -16,7 +16,7 @@ import {
 import { NEW_POST } from "./../utils/mutations";
 import { QUERY_USER_BY_ID } from "./../utils/queries";
 import Auth from "./../utils/auth";
-import Upload from "./cloudinary/Upload";
+import Upload from "./cloud/Upload";
 
 const INITIAL_FORM_STATE = {
   title: "",
