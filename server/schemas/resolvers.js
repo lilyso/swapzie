@@ -105,6 +105,51 @@ const resolvers = {
 
       return { token, user };
     },
+    newComment: async (parent, args, context) => {
+      if (context.user) {
+        const newComment = await Post.findOneAndUpdate(
+          { _id: args.postId },
+          { $addToSet: { comments: args } },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        return newComment;
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    removeComment: async (parent, args, context) => {
+      if (context.user) {
+        return Post.findOneAndUpdate(
+          { _id: args.postId },
+          {
+            $pull: {
+              comments: {
+                _id: args._id,
+                userId: context.user._id,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    updateComment: async (parent, args, context) => {
+      if (context.user) {
+        return Post.findOneAndUpdate(
+          { _id: args.postId, "post.comment._id": args._id },
+          {
+            $set: {
+              "comments.$.comment": args.comment,
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 };
 //addComment

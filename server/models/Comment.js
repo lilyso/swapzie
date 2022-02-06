@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const commentSchema = new Schema(
   {
-    post: {
+    postId: {
       type: Schema.Types.ObjectId,
       ref: "Post",
       required: true,
     },
-    user: {
+    userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,

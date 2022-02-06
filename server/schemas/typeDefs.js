@@ -88,7 +88,8 @@ const typeDefs = gql`
       user: ID!
     ): Post
     addComment(user: ID!, comment: String!): Comment
-    updateComment(user: ID!, comment: String!): Comment
+    updateComment(user: ID!): Comment
+    deleteComment(user: ID!): Comment
   }
 `;
 
