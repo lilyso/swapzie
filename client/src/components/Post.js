@@ -2,7 +2,7 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { Image, Box, Heading, Text, Button, Center } from "@chakra-ui/react";
 import getDate from "../utils/date.js";
-
+// Post render on Swap page
 const Post = ({ posts }) => {
   return (
     <>

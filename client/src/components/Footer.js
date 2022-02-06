@@ -1,15 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import {
-  Image,
-  Box,
-  Heading,
-  Text,
-  Wrap,
-  Flex,
-  Center,
-  Link,
-} from "@chakra-ui/react";
+import { Image, Box, Wrap, Center, Link } from "@chakra-ui/react";
 
 function Footer() {
   return (

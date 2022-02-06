@@ -10,7 +10,7 @@ import {
   Spacer,
   Box,
 } from "@chakra-ui/react";
-
+// When user is logged in show dashboard
 function Nav() {
   if (Auth.loggedIn()) {
     return (

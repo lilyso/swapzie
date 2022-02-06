@@ -14,7 +14,6 @@ import {
   Textarea,
   Select,
   useDisclosure,
-  Image,
 } from "@chakra-ui/react";
 import Upload from "../cloud/Upload";
 import { UPDATE_POST } from "../../utils/mutations";
@@ -22,13 +21,13 @@ import { useMutation } from "@apollo/client";
 
 function UpdatePost({ categories, post }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  // Set form state to orginal post
   const [formState, setFormState] = useState(post && post);
 
   const [updatePost] = useMutation(UPDATE_POST);
 
   const handleUpdateSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       const mutationRes = await updatePost({
         variables: {
@@ -41,7 +40,7 @@ function UpdatePost({ categories, post }) {
           location: formState.location,
         },
       });
-      console.log(formState);
+      // Close modal if post update successfull
       onClose();
     } catch (error) {
       console.log(error);
@@ -51,14 +50,13 @@ function UpdatePost({ categories, post }) {
   const initialRef = React.useRef();
   const finalRef = React.useRef();
 
+  // Set new form state when changed
   const handleEdit = (event) => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
       [name]: value,
     });
-
-    console.log({ ...formState, [name]: value });
   };
 
   return (

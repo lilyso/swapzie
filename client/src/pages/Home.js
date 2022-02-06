@@ -21,36 +21,21 @@ const Home = () => {
           <Center>
             <Box maxW="2400px">
               <Text px={8} pb={4}>
-                Nulla porttitor accumsan tincidunt. Curabitur non nulla sit amet
-                nisl tempus convallis quis ac lectus. Curabitur non nulla sit
-                amet nisl tempus convallis quis ac lectus. Curabitur arcu erat,
-                accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut
-                libero malesuada feugiat. Curabitur arcu erat, accumsan id
-                imperdiet et, porttitor at sem. Vivamus suscipit tortor eget
-                felis porttitor volutpat. Vestibulum ac diam sit amet quam
-                vehicula elementum sed sit amet dui. Pellentesque in ipsum id
-                orci porta dapibus. Donec sollicitudin molestie malesuada.
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                posuere cubilia Curae; Donec velit neque, auctor sit amet
-                aliquam vel, ullamcorper sit amet ligula. Nulla quis lorem ut
-                libero malesuada feugiat. Pellentesque in ipsum id orci porta
-                dapibus.
+                Big changes start small. At Swapzie, we know how easy it is to
+                accumlate stuff and things! Kids grow up so fast and are in
+                constant need of new clothes, learning tools and toys. But that
+                comes at a cost. Australians throw away millions of toys and
+                spend billions on new toys every year. Join the movement to
+                reduce and reuse. Whether you're a thrifty parent or looking to
+                reduce your environmental impact, Swapzie offers a
+                family-friendly platform to swap or donate well-loved toys.
               </Text>
               <Text px={8} pb={4}>
-                Nulla porttitor accumsan tincidunt. Curabitur non nulla sit amet
-                nisl tempus convallis quis ac lectus. Curabitur non nulla sit
-                amet nisl tempus convallis quis ac lectus. Curabitur arcu erat,
-                accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut
-                libero malesuada feugiat. Curabitur arcu erat, accumsan id
-                imperdiet et, porttitor at sem. Vivamus suscipit tortor eget
-                felis porttitor volutpat. Vestibulum ac diam sit amet quam
-                vehicula elementum sed sit amet dui. Pellentesque in ipsum id
-                orci porta dapibus. Donec sollicitudin molestie malesuada.
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                posuere cubilia Curae; Donec velit neque, auctor sit amet
-                aliquam vel, ullamcorper sit amet ligula. Nulla quis lorem ut
-                libero malesuada feugiat. Pellentesque in ipsum id orci porta
-                dapibus.
+                Teach your kids the importance of reducing waste, reusing and
+                recycling by swapping instead of buying new. Together we can
+                make a small change in your lifestyle for a greater impact. Help
+                ensure the future of the planet for our kids and inspire play
+                time for the next generation.
               </Text>
             </Box>
           </Center>

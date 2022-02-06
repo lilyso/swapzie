@@ -5,12 +5,12 @@ import { DELETE_POST } from "../utils/mutations";
 import { QUERY_USER_BY_ID } from "../utils/queries";
 import { useMutation } from "@apollo/client";
 import UpdatePost from "./modals/ModalUpdatePost";
-
+// Render user's posts
 const UserPosts = ({ user, categories }) => {
   const [removePost] = useMutation(DELETE_POST, {
     refetchQueries: [{ query: QUERY_USER_BY_ID }],
   });
-
+  // Delete post
   const deletePost = async (event) => {
     const postId = event.target.value;
     try {

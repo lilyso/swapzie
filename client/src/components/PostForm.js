@@ -5,13 +5,10 @@ import {
   FormLabel,
   Button,
   Box,
-  Center,
   Input,
   Text,
   Textarea,
   Select,
-  Image,
-  Heading,
 } from "@chakra-ui/react";
 import { NEW_POST } from "./../utils/mutations";
 import { QUERY_USER_BY_ID } from "./../utils/queries";
@@ -27,6 +24,7 @@ const INITIAL_FORM_STATE = {
   location: "",
 };
 
+// Create new post form
 const NewPost = ({ categories }) => {
   const [formState, setFormState] = useState(INITIAL_FORM_STATE);
 
@@ -50,13 +48,14 @@ const NewPost = ({ categories }) => {
           user: user.data._id,
         },
       });
-
+      // Reset form
       setFormState(INITIAL_FORM_STATE);
     } catch (error) {
       console.log(error);
     }
   };
 
+  // Get user data and set form state
   const getUser = async () => {
     const profile = await Auth.getProfile();
     setFormState({
@@ -65,7 +64,7 @@ const NewPost = ({ categories }) => {
     });
     return;
   };
-
+  // Set form state when input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -73,7 +72,7 @@ const NewPost = ({ categories }) => {
       [name]: value,
     });
   };
-
+  // SEt form state for uploaded image
   const updateUpload = (event) => {
     let imageUpload = event;
     setFormState({

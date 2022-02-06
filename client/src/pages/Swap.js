@@ -1,16 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import {
-  Image,
-  Container,
-  Box,
-  Heading,
-  Text,
-  Wrap,
-  Center,
-  Button,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, Wrap, Center } from "@chakra-ui/react";
 import { QUERY_POSTS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import Post from "../components/Post";
