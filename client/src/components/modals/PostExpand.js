@@ -6,7 +6,6 @@ import {
   Modal,
   ModalContent,
   ModalOverlay,
-  ModalHeader,
   ModalCloseButton,
   ModalBody,
   ModalFooter,
@@ -14,11 +13,9 @@ import {
   useDisclosure,
   FormControl,
   FormLabel,
-  Input,
   Text,
   Image,
   Heading,
-  Box,
   Textarea,
 } from "@chakra-ui/react";
 import Comment from "./Comment";

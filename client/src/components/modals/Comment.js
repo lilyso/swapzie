@@ -1,19 +1,48 @@
-import React from "react";
-import { Box, Text, Button } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, Text, Button, FormControl, Input, Flex } from "@chakra-ui/react";
 import getDate from "../../utils/date.js";
 import Auth from "../../utils/auth";
+import { UPDATE_COMMENT } from "../../utils/mutations";
+import { QUERY_POSTS } from "../../utils/queries.js";
+import { useMutation } from "@apollo/client";
 
 export default function Comment({ comment, removeComment }) {
-  const [editing, setEditing] = React.useState(false);
+  const [editing, setEditing] = useState(false);
+  const [editState, setEditState] = useState(comment.comment);
   const currentUser = Auth.getProfile();
+  const [updateComment] = useMutation(UPDATE_COMMENT, {
+    refetchQueries: [{ query: QUERY_POSTS }],
+  });
+
+  const handleSubmitComment = async (event) => {
+    event.preventDefault();
+    try {
+      await updateComment({
+        variables: {
+          postId: comment.postId,
+          _id: comment._id,
+          comment: editState.comment,
+        },
+      });
+      setEditing(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUserUpdate = (event) => {
+    const { value } = event.target;
+    setEditState({
+      ...editState,
+      comment: value,
+    });
+  };
 
   const enableEditing = () => {
     if (comment.userId._id === currentUser.data._id) {
       setEditing(!editing);
     }
   };
-
-  const updateComment = async () => {};
 
   return (
     <Box key={comment._id}>
@@ -41,7 +70,21 @@ export default function Comment({ comment, removeComment }) {
           )}
         </>
       ) : (
-        <>Here we are ediitng</>
+        <>
+          <form onSubmit={handleSubmitComment}>
+            <Flex>
+              <FormControl>
+                <Input
+                  onChange={handleUserUpdate}
+                  defaultValue={comment.comment}
+                ></Input>
+              </FormControl>
+              <Button type="submit" ml={4}>
+                Update
+              </Button>
+            </Flex>
+          </form>
+        </>
       )}
     </Box>
   );
