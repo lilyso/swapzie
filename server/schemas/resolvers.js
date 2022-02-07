@@ -20,7 +20,10 @@ const resolvers = {
         };
       }
 
-      return await Post.find(params).populate("user").populate("category");
+      return await Post.find(params)
+        .populate("user")
+        .populate("category")
+        .populate({ path: "comments", populate: "userId" });
     },
     post: async (parent, { _id }) => {
       return await Post.findById(_id)

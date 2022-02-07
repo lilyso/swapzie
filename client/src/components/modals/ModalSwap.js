@@ -125,7 +125,7 @@ function PostExpand({ post }) {
               post.comments.map((comment, i) => (
                 <Box key={comment._id}>
                   <Text>
-                    {comment.comment} - user,{" "}
+                    {comment.comment} - {comment.userId.firstName},{" "}
                     {getDate(comment.created_at / 1000)}
                   </Text>
                   {currentUser && currentUser.data._id === comment.userId && (

@@ -19,6 +19,10 @@ export const QUERY_USER_BY_ID = gql`
         claimedBy
         comments {
           comment
+          userId {
+            firstName
+          }
+          created_at
         }
         created_at
       }
@@ -72,7 +76,10 @@ export const QUERY_POSTS = gql`
       comments {
         _id
         postId
-        userId
+        userId {
+          firstName
+          lastName
+        }
         comment
         created_at
       }
