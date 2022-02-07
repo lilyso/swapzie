@@ -1,19 +1,9 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import {
-  Image,
-  Box,
-  Heading,
-  Text,
-  Flex,
-  Center,
-  Wrap,
-} from "@chakra-ui/react";
+import { Box, Heading, Center, Wrap } from "@chakra-ui/react";
 import { QUERY_CATEGORIES, QUERY_USER_BY_ID } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import PostForm from "../components/PostForm";
 import UserPosts from "../components/DashboardPost";
-import Auth from "../utils/auth";
 
 const Dashboard = () => {
   const categoryData = useQuery(QUERY_CATEGORIES);

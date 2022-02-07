@@ -60,8 +60,8 @@ const Home = () => {
               </Text>
               <Text p={4}>
                 3. Once you find the perfect swap or donation, offer the swap to
-                the user from your dashboard. Once the user has claimed the
-                toys, organise to swap in person.
+                the chosen person from your dashboard. Once they have claimed
+                the toys, organise to swap in person.
               </Text>
             </Box>
           </Center>

@@ -70,8 +70,10 @@ export const QUERY_POSTS = gql`
         lastName
       }
       comments {
-        user
+        postId
+        userId
         comment
+        created_at
       }
       created_at
     }

@@ -1,4 +1,4 @@
-import React, { useDisclosure } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Modal,
@@ -11,6 +11,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 function InitialFocus() {

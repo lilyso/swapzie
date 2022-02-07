@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Post, Category } = require("../models");
+const { User, Post, Category, Comment } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -105,7 +105,7 @@ const resolvers = {
 
       return { token, user };
     },
-    newComment: async (parent, args, context) => {
+    addComment: async (parent, args, context) => {
       if (context.user) {
         const newComment = await Post.findOneAndUpdate(
           { _id: args.postId },
@@ -119,7 +119,7 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
-    removeComment: async (parent, args, context) => {
+    deleteComment: async (parent, args, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
           { _id: args.postId },
@@ -136,14 +136,12 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    updateComment: async (parent, args, context) => {
+    updateComment: async (parent, { postId, _id, comment }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
-          { _id: args.postId, "post.comment._id": args._id },
+          { _id: postId, "comments._id": _id },
           {
-            $set: {
-              "comments.$.comment": args.comment,
-            },
+            $set: { "comments.$.comment": comment },
           },
           { new: true }
         );
@@ -152,6 +150,4 @@ const resolvers = {
     },
   },
 };
-//addComment
-//updateComment
 module.exports = resolvers;

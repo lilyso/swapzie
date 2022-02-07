@@ -1,7 +1,7 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
 import { Image, Box, Heading, Text, Button, Center } from "@chakra-ui/react";
 import getDate from "../utils/date.js";
+import PostExpand from "./modals/ModalSwap";
 // Post render on Swap page
 const Post = ({ posts }) => {
   return (
@@ -53,9 +53,7 @@ const Post = ({ posts }) => {
               </Text>
             </Box>
             <Center>
-              <Button color="white" bgColor="#1a535c" data-id={post._id}>
-                Swap
-              </Button>
+              <PostExpand post={post} />
             </Center>
           </Box>
         ))}
