@@ -126,8 +126,8 @@ export const NEW_COMMENT = gql`
 `;
 
 export const DELETE_COMMENT = gql`
-  mutation deleteComment($_id: ID!) {
-    deleteComment(_id: $_id) {
+  mutation deleteComment($postId: ID!, $_id: ID!) {
+    deleteComment(postId: $postId, _id: $_id) {
       comments {
         _id
         comment

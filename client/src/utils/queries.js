@@ -70,6 +70,7 @@ export const QUERY_POSTS = gql`
         lastName
       }
       comments {
+        _id
         postId
         userId
         comment
