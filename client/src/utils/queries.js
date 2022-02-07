@@ -20,7 +20,9 @@ export const QUERY_USER_BY_ID = gql`
         comments {
           comment
           userId {
+            _id
             firstName
+            lastName
           }
           created_at
         }
@@ -70,6 +72,7 @@ export const QUERY_POSTS = gql`
         name
       }
       user {
+        _id
         firstName
         lastName
       }
@@ -77,6 +80,7 @@ export const QUERY_POSTS = gql`
         _id
         postId
         userId {
+          _id
           firstName
           lastName
         }

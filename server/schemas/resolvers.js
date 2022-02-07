@@ -26,16 +26,14 @@ const resolvers = {
         .populate({ path: "comments", populate: "userId" });
     },
     post: async (parent, { _id }) => {
-      return await Post.findById(_id)
-        .populate("category")
-        .populate("user")
-        .exec();
+      return await Post.findById(_id).populate("category").populate("user");
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById({ _id: context.user._id })
           .populate("posts")
-          .populate({ path: "posts", populate: "category" });
+          .populate({ path: "posts", populate: "category" })
+          .populate({ path: "posts.comments", populate: "userId" });
         return user;
       }
 

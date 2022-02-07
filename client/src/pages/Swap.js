@@ -8,6 +8,7 @@ import Post from "../components/Post";
 const Dashboard = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
+
   return (
     <>
       <Center>

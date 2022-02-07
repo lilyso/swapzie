@@ -21,6 +21,7 @@ import {
   Box,
   Textarea,
 } from "@chakra-ui/react";
+import Comment from "./Comment";
 import Auth from "../../utils/auth";
 import { DELETE_COMMENT, NEW_COMMENT } from "../../utils/mutations";
 import { QUERY_POSTS } from "../../utils/queries.js";
@@ -37,18 +38,8 @@ function PostExpand({ post }) {
   const [addComment] = useMutation(NEW_COMMENT, {
     refetchQueries: [{ query: QUERY_POSTS }],
   });
-
   // Add comment
-  const newComment = async (event) => {
-    event.preventDefault();
-    console.log(
-      "postId:",
-      post._id,
-      "userId:",
-      currentUser.data._id,
-      "comment:",
-      commentState.comment
-    );
+  const newComment = async () => {
     try {
       await addComment({
         variables: {
@@ -123,33 +114,20 @@ function PostExpand({ post }) {
             </Text>
             {post.comments &&
               post.comments.map((comment, i) => (
-                <Box key={comment._id}>
-                  <Text>
-                    {comment.comment} - {comment.userId.firstName},{" "}
-                    {getDate(comment.created_at / 1000)}
-                  </Text>
-                  {currentUser && currentUser.data._id === comment.userId && (
-                    <Box>
-                      <Button
-                        onClick={removeComment}
-                        bgColor="#FF6B6B"
-                        m={4}
-                        size="xs"
-                        value={comment._id}
-                      >
-                        Delete
-                      </Button>
-                      <Button m={4} size="xs">
-                        Edit
-                      </Button>
-                    </Box>
-                  )}
-                </Box>
+                <Comment
+                  comment={comment}
+                  removeComment={removeComment}
+                  key={comment._id}
+                />
               ))}
           </ModalBody>
           <FormControl px={4}>
             <FormLabel>Add Comment</FormLabel>
-            <Textarea onChange={handleNewComment} name="comment"></Textarea>
+            <Textarea
+              value={commentState && commentState.comment}
+              onChange={handleNewComment}
+              name="comment"
+            ></Textarea>
           </FormControl>
           <ModalFooter>
             <Button onClick={newComment} color="white" bgColor="#1a535c" mr={3}>

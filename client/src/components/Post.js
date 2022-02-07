@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, Box, Heading, Text, Button, Center } from "@chakra-ui/react";
 import getDate from "../utils/date.js";
-import PostExpand from "./modals/ModalSwap";
+import PostExpand from "./modals/PostExpand";
 // Post render on Swap page
 const Post = ({ posts }) => {
   return (
