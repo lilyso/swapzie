@@ -47,7 +47,7 @@ const Post = ({ posts }) => {
                 {post.location}, {post.category.name}, {post.age}
               </Text>
               <Text h={120} py={4}>
-                {truncate_text(post.description)}
+                {truncate_text(post.description)}...
               </Text>
               <Text fontSize="sm" pb={4}>
                 Posted by {post.user.firstName} on{"  "}

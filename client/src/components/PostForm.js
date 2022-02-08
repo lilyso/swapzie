@@ -55,16 +55,6 @@ const NewPost = ({ categories }) => {
     }
   };
 
-  // Get user data and set form state
-  // const getUser = async () => {
-  //   const profile = await Auth.getProfile();
-  //   setFormState({
-  //     ...formState,
-  //     user: profile.data._id,
-  //   });
-  //   return;
-  // };
-
   // Set form state when input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -129,6 +119,7 @@ const NewPost = ({ categories }) => {
               <option value="10-12yo">10-12yo</option>
             </Select>
             <Select
+              value={formState && formState.location}
               onChange={handleChange}
               name="category"
               mb={4}
