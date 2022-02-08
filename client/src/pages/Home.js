@@ -20,7 +20,7 @@ const Home = () => {
           <Box maxW="2400px">
             <Text px={8} pb={4}>
               Big changes start small. At Swapzie, we know how easy it is to
-              accumlate stuff and things! Kids grow up so fast and are in
+              accumulate stuff and things! Kids grow up so fast and are in
               constant need of new clothes, learning tools and toys. But that
               comes at a cost. Australians throw away millions of toys and spend
               billions on new toys every year. Join the movement to reduce and
@@ -31,7 +31,7 @@ const Home = () => {
             <Text px={8} pb={4}>
               Teach your kids the importance of reducing waste, reusing and
               recycling by swapping instead of buying new. Together we can make
-              a small change in your lifestyle for a greater impact. Help ensure
+              a small change in our lifestyle for a greater impact. Help ensure
               the future of the planet for our kids and inspire play time for
               the next generation.
             </Text>
