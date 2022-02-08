@@ -2,13 +2,13 @@ import React from "react";
 import { Box, Center, Text, Image, Heading, Button } from "@chakra-ui/react";
 import getDate from "../utils/date.js";
 import { DELETE_POST } from "../utils/mutations";
-import { QUERY_USER_BY_ID } from "../utils/queries";
+import { QUERY_USER_BY_ID, QUERY_POSTS } from "../utils/queries";
 import { useMutation } from "@apollo/client";
 import UpdatePost from "./modals/ModalUpdatePost";
 // Render user's posts
 const UserPosts = ({ user, categories }) => {
   const [removePost] = useMutation(DELETE_POST, {
-    refetchQueries: [{ query: QUERY_USER_BY_ID }],
+    refetchQueries: [{ query: QUERY_USER_BY_ID }, { query: QUERY_POSTS }],
   });
   // Delete post
   const deletePost = async (event) => {
