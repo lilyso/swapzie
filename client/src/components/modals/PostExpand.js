@@ -85,17 +85,29 @@ function PostExpand({ post }) {
         <ModalContent>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <Center>
-              <Image
-                mt={4}
-                boxSize={300}
-                objectFit="cover"
-                borderRadius={10}
-                mb={4}
-                src={post.image}
-                alt="post feature"
-              />
-            </Center>
+            {post.image ? (
+              <Center>
+                <Image
+                  mt={4}
+                  boxSize={300}
+                  objectFit="cover"
+                  borderRadius={10}
+                  my={4}
+                  src={post.image}
+                  alt="post feature"
+                />
+              </Center>
+            ) : (
+              <Center>
+                <Image
+                  boxSize={200}
+                  objectFit="cover"
+                  borderRadius={10}
+                  my={4}
+                  src="./images/no-image.png"
+                />
+              </Center>
+            )}
             <Heading h="50px" size="md">
               {post.title}
             </Heading>
