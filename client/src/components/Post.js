@@ -4,7 +4,7 @@ import getDate from "../utils/date.js";
 import PostExpand from "./modals/PostExpand";
 
 // Post render on Swap page
-const Post = ({ posts, categories }) => {
+const Post = ({ posts }) => {
   return (
     <>
       {posts &&
@@ -49,7 +49,7 @@ const Post = ({ posts, categories }) => {
                 {post.description}
               </Text>
               <Text fontSize="sm" pb={4}>
-                Posted by {post.user.firstName} on{"  "}
+                {/* Posted by {post.user.firstName} on{"  "} */}
                 {getDate(post.created_at / 1000)}
               </Text>
             </Box>

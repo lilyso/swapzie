@@ -1,11 +1,9 @@
 const db = require("./connection");
-const { User, Category, Post } = require("../models");
+const { Category } = require("../models");
 
 db.once("open", async () => {
   try {
     await Category.deleteMany({});
-    await Post.deleteMany({});
-    await User.deleteMany({});
 
     const categories = await Category.insertMany([
       { name: "Soft Toys" },
@@ -22,80 +20,6 @@ db.once("open", async () => {
     ]);
 
     console.log("categories seeded");
-
-    const posts = await Post.insertMany([
-      {
-        title: "Toy Kitchen",
-        description:
-          "Well-loved toy kitchen. Comes with toy kitchen accessories and food.",
-        image: "",
-        age: "4-5yo",
-        category: { _id: "", name: "Pretend Play" },
-        location: "Sydney",
-        comments: [],
-        user: "",
-        claimedBy: "",
-      },
-      {
-        title: "Marvel action heroes",
-        description:
-          "Avengers actions heroes. Great condition. Small scratch on Spiderman.",
-        image: "",
-        age: "4-5yo",
-        category: { _id: "", name: "Action Figures" },
-        location: "Sydney",
-        comments: [],
-        user: "",
-        claimedBy: "",
-      },
-      {
-        title: "Various toddler books",
-        description: "All in great condition and barely used",
-        image: "",
-        age: "1-2yo",
-        category: { _id: "", name: "Books" },
-        location: "Sydney",
-        comments: [],
-        user: "",
-        claimedBy: "",
-      },
-      {
-        title: "Wooden puzzles for toddlers",
-        description:
-          "My 2yo loved these but she's grown out of them now. Good used condition and many more years to go.",
-        image: "1-2yo",
-        category: { _id: "", name: "Puzzles" },
-        location: "Sydney",
-        comments: [],
-        user: "",
-        claimedBy: "",
-      },
-      {
-        title: "100+ set of magnetic tiles",
-        description:
-          "Keep the kids busy with these magnetic tiles. A few scuffs but in good working condition",
-        image: "",
-        category: { _id: "", name: "Construction" },
-        location: "Sydney",
-        comments: [],
-        user: "",
-        claimedBy: "",
-      },
-      {
-        title: "Set of Frozen dolls",
-        description:
-          "She got two sets for christmas so these have barely been played with.",
-        image: "",
-        age: "4-5yo",
-        category: { _id: "", name: "Dolls" },
-        location: "Sydney",
-        comments: [],
-        user: "",
-        claimedBy: "",
-      },
-    ]);
-
-    console.log("posts seeded");
 
     process.exit();
   } catch (err) {
