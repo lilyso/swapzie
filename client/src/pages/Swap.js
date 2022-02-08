@@ -25,7 +25,6 @@ const Swap = () => {
           pt={4}
           minWidth="200px"
           maxWidth="300px"
-          // onChange={handleChange}
           name="category"
           placeholder="Filter by Category"
         >
@@ -40,9 +39,7 @@ const Swap = () => {
           pt={4}
           minWidth="200px"
           maxWidth="300px"
-          // onChange={handleChange}
           name="age"
-          // value={formState && formState.age}
           placeholder="Filter by Age"
         >
           <option value="0-6m">0-6m</option>

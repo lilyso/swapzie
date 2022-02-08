@@ -11,7 +11,7 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { NEW_POST } from "./../utils/mutations";
-import { QUERY_USER_BY_ID } from "./../utils/queries";
+import { QUERY_POSTS, QUERY_USER_BY_ID } from "./../utils/queries";
 import Auth from "./../utils/auth";
 import Upload from "./cloud/Upload";
 
@@ -29,7 +29,7 @@ const NewPost = ({ categories }) => {
   const [formState, setFormState] = useState(INITIAL_FORM_STATE);
 
   const [newPost, { error }] = useMutation(NEW_POST, {
-    refetchQueries: [{ query: QUERY_USER_BY_ID }],
+    refetchQueries: [{ query: QUERY_USER_BY_ID }, { query: QUERY_POSTS }],
   });
 
   const handleFormSubmit = async (event) => {
@@ -119,7 +119,7 @@ const NewPost = ({ categories }) => {
               <option value="10-12yo">10-12yo</option>
             </Select>
             <Select
-              value={formState && formState.location}
+              value={formState && formState.category}
               onChange={handleChange}
               name="category"
               mb={4}
