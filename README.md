@@ -44,7 +44,9 @@
 
 ## Screenshots
 
-Coming soon.
+![swapzie homepage](client/public/images/swapzie_home_page.png)
+![swapzie dashboard](client/public/images/swapzie_dashboard.png)
+![swapzie swap page](client/public/images/swapzie_swap_page.png)
 
 ## Setup
 
