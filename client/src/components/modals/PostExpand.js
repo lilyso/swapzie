@@ -17,6 +17,7 @@ import {
   Image,
   Heading,
   Textarea,
+  Box,
 } from "@chakra-ui/react";
 import Comment from "./Comment";
 import Auth from "../../utils/auth";
@@ -73,7 +74,9 @@ function PostExpand({ post }) {
 
   return (
     <>
-      <Button onClick={onOpen}>Swap</Button>
+      <Button color="white" bgColor="#1a535c" onClick={onOpen}>
+        Swap
+      </Button>
 
       <Modal
         initialFocusRef={initialRef}

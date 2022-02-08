@@ -5,6 +5,7 @@ import Auth from "../../utils/auth";
 import { UPDATE_COMMENT } from "../../utils/mutations";
 import { QUERY_POSTS } from "../../utils/queries.js";
 import { useMutation } from "@apollo/client";
+import { graphqlSync } from "graphql";
 
 export default function Comment({ comment, removeComment }) {
   const [editing, setEditing] = useState(false);
@@ -48,13 +49,14 @@ export default function Comment({ comment, removeComment }) {
     <Box key={comment._id}>
       {!editing ? (
         <>
-          <Text>
+          <Text mb={4} borderRadius="10px" p={4} bg="gray.100">
             {comment.comment} - {comment.userId.firstName},{" "}
             {getDate(comment.created_at / 1000)}
           </Text>
           {currentUser && currentUser.data._id === comment.userId._id && (
             <Box>
               <Button
+                color="white"
                 onClick={removeComment}
                 bgColor="#FF6B6B"
                 m={4}
@@ -63,7 +65,13 @@ export default function Comment({ comment, removeComment }) {
               >
                 Delete
               </Button>
-              <Button m={4} size="xs" onClick={() => enableEditing()}>
+              <Button
+                color="white"
+                bgColor="#1a535c"
+                m={4}
+                size="xs"
+                onClick={() => enableEditing()}
+              >
                 Edit
               </Button>
             </Box>

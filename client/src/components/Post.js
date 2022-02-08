@@ -2,6 +2,7 @@ import React from "react";
 import { Image, Box, Heading, Text, Center } from "@chakra-ui/react";
 import getDate from "../utils/date.js";
 import PostExpand from "./modals/PostExpand";
+import { truncate_text } from "../utils/helpers";
 
 // Post render on Swap page
 const Post = ({ posts }) => {
@@ -46,7 +47,7 @@ const Post = ({ posts }) => {
                 {post.location}, {post.category.name}, {post.age}
               </Text>
               <Text h={120} py={4}>
-                {post.description}
+                {truncate_text(post.description)}
               </Text>
               <Text fontSize="sm" pb={4}>
                 Posted by {post.user.firstName} on{"  "}
