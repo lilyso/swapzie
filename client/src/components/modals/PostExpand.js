@@ -118,7 +118,7 @@ function PostExpand({ post }) {
               {post.description}
             </Text>
             <Text fontSize="sm" pb={4}>
-              Posted by {post.user.firstName} on
+              Posted by {post.user.firstName} on{"  "}
               {getDate(post.created_at / 1000)}
             </Text>
             {post.comments &&
