@@ -1,15 +1,22 @@
-import React from "react";
-import { Box, Heading, Text, Wrap, Center, Select } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { Box, Text, Wrap, Select, Center } from "@chakra-ui/react";
 import { QUERY_POSTS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import Post from "../components/Post";
 import { QUERY_CATEGORIES } from "../utils/queries";
+import auth from "../utils/auth.js";
 
 const Swap = () => {
   const categoryData = useQuery(QUERY_CATEGORIES);
   const categories = categoryData.data?.categories || [];
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const testLoggedIn = auth.loggedIn();
+    setLoggedIn(testLoggedIn);
+  }, []);
 
   return (
     <>
@@ -47,6 +54,13 @@ const Swap = () => {
           <option value="10-12yo">10-12yo</option>
         </Select>
       </Wrap>
+      {!loggedIn && (
+        <Center>
+          <Text fontStyle="italic" mt={4} p={4}>
+            Login or Sign up to start swapping!
+          </Text>
+        </Center>
+      )}
       <Box p={4}>
         <Wrap justify="center">
           {loading ? <Text>Loading...</Text> : <Post posts={posts} />}

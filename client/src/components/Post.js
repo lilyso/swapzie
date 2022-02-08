@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Image, Box, Heading, Text, Center } from "@chakra-ui/react";
 import getDate from "../utils/date.js";
 import PostExpand from "./modals/PostExpand";
 import { truncate_text } from "../utils/helpers";
+import auth from "../utils/auth.js";
 
 // Post render on Swap page
 const Post = ({ posts }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const testLoggedIn = auth.loggedIn();
+    setLoggedIn(testLoggedIn);
+  }, []);
+
   return (
     <>
       {posts &&
@@ -54,9 +62,7 @@ const Post = ({ posts }) => {
                 {getDate(post.created_at / 1000)}
               </Text>
             </Box>
-            <Center>
-              <PostExpand post={post} />
-            </Center>
+            <Center>{loggedIn && <PostExpand post={post} />}</Center>
           </Box>
         ))}
     </>

@@ -5,7 +5,6 @@ import Auth from "../../utils/auth";
 import { UPDATE_COMMENT } from "../../utils/mutations";
 import { QUERY_POSTS } from "../../utils/queries.js";
 import { useMutation } from "@apollo/client";
-import { graphqlSync } from "graphql";
 
 export default function Comment({ comment, removeComment }) {
   const [editing, setEditing] = useState(false);
