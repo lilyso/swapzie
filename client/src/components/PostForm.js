@@ -27,11 +27,11 @@ const INITIAL_FORM_STATE = {
 // Create new post form
 const NewPost = ({ categories }) => {
   const [formState, setFormState] = useState(INITIAL_FORM_STATE);
-
+  // Add new post to database and refetch queries to update page content
   const [newPost, { error }] = useMutation(NEW_POST, {
     refetchQueries: [{ query: QUERY_USER_BY_ID }, { query: QUERY_POSTS }],
   });
-
+  // Set variables to add new post
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -63,7 +63,7 @@ const NewPost = ({ categories }) => {
       [name]: value,
     });
   };
-  // SEt form state for uploaded image
+  // Set form state for uploaded image
   const updateUpload = (event) => {
     let imageUpload = event;
     setFormState({

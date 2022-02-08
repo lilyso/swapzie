@@ -8,7 +8,7 @@ import auth from "../utils/auth.js";
 // Post render on Swap page
 const Post = ({ posts }) => {
   const [loggedIn, setLoggedIn] = useState(false);
-
+  // Check that user is logged in to be able to comment and expand post
   useEffect(() => {
     const testLoggedIn = auth.loggedIn();
     setLoggedIn(testLoggedIn);
