@@ -49,7 +49,7 @@ const Post = ({ posts }) => {
               <Text h={120} py={4}>
                 {truncate_text(post.description)}...
               </Text>
-              <Text fontSize="sm" pb={4}>
+              <Text fontSize="sm" py={4}>
                 Posted by {post.user.firstName} on{"  "}
                 {getDate(post.created_at / 1000)}
               </Text>
