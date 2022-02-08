@@ -56,14 +56,15 @@ const NewPost = ({ categories }) => {
   };
 
   // Get user data and set form state
-  const getUser = async () => {
-    const profile = await Auth.getProfile();
-    setFormState({
-      ...formState,
-      user: profile.data._id,
-    });
-    return;
-  };
+  // const getUser = async () => {
+  //   const profile = await Auth.getProfile();
+  //   setFormState({
+  //     ...formState,
+  //     user: profile.data._id,
+  //   });
+  //   return;
+  // };
+
   // Set form state when input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -130,7 +131,6 @@ const NewPost = ({ categories }) => {
             <Select
               onChange={handleChange}
               name="category"
-              value={formState && formState.category}
               mb={4}
               placeholder="Select Category"
             >
